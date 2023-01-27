@@ -69,9 +69,11 @@ class WordDetailFragment(
                     if (audioPlayer.playbackState == ExoPlayer.STATE_ENDED) {
                         audioPlayer.seekTo(0)
                         audioPlayer.playWhenReady = false
-                        binding.listenButton
-                            .setImageDrawable(ContextCompat.getDrawable(requireContext(),
-                                R.drawable.ic_baseline_play_arrow_24))
+                        context?.let {
+                            binding.listenButton
+                                .setImageDrawable(ContextCompat.getDrawable(requireContext(),
+                                    R.drawable.ic_baseline_play_arrow_24))
+                        }
                     }
                 }
             })
