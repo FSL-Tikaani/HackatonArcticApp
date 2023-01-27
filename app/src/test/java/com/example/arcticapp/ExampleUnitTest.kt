@@ -1,4 +1,4 @@
-package com.example.arcticappfinal
+package com.example.arcticapp
 
 import org.junit.Test
 

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1065378311871",
+    "firebase_url": "https://time-mashine-minsk-default-rtdb.firebaseio.com",
+    "project_id": "time-mashine-minsk",
+    "storage_bucket": "time-mashine-minsk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065378311871:android:dac5de2431f2698169200a",
+        "android_client_info": {
+          "package_name": "com.example.arcticapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065378311871-3o2d13di9sbd56mgu6et4kbhj2k2ervl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHbxqBtRbj6AbI7ey1lmV1t-cffEMxwCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065378311871-3o2d13di9sbd56mgu6et4kbhj2k2ervl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065378311871:android:83d1a74130a7231469200a",
+        "android_client_info": {
+          "package_name": "com.example.arcticappfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065378311871-3o2d13di9sbd56mgu6et4kbhj2k2ervl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHbxqBtRbj6AbI7ey1lmV1t-cffEMxwCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065378311871-3o2d13di9sbd56mgu6et4kbhj2k2ervl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

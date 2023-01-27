@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_words">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.arcticappfinal.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_words"
+        android:name="com.example.arcticapp.ui.words.WordsFragment"
+        android:label="@string/title_words"
+        tools:layout="@layout/fragment_words" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.arcticappfinal.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_phrases"
+        android:name="com.example.arcticapp.ui.phrases.PhrasesFragment"
+        android:label="@string/title_phrases"
+        tools:layout="@layout/fragment_phrases" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.arcticappfinal.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_suggestions"
+        android:name="com.example.arcticapp.ui.suggestions.SuggestionsFragment"
+        android:label="@string/title_suggestions"
+        tools:layout="@layout/fragment_suggestions" />
 </navigation>
