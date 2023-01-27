@@ -1,7 +1,6 @@
-package com.example.arcticapp.ui.words
+package com.example.arcticapp.ui.vocabulary
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.ui.adapters.WordsAdapter
+import com.example.arcticapp.ui.education.EducationViewModel
 import com.example.arcticapp.ui.wordDetail.WordDetailFragment
-import com.example.arcticappfinal.databinding.FragmentWordsBinding
+import com.example.arcticappfinal.databinding.FragmentVocabularyBinding
 
-class WordsFragment : Fragment() {
+class VocabularyFragment : Fragment() {
 
-    private var binding: FragmentWordsBinding? = null
+    private var binding: FragmentVocabularyBinding? = null
     private lateinit var adapter: WordsAdapter
     private lateinit var recyclerView: RecyclerView
 
@@ -24,17 +24,17 @@ class WordsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val wordsViewModel =
-            ViewModelProvider(this)[WordsViewModel::class.java]
+        val educationViewModel =
+            ViewModelProvider(this)[EducationViewModel::class.java]
 
-        binding = FragmentWordsBinding.inflate(inflater, container, false)
+        binding = FragmentVocabularyBinding.inflate(inflater, container, false)
         //inint recycler view
         recyclerView = binding!!.recyclerViewWords
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = WordsAdapter{ word ->
             WordDetailFragment(word).show(childFragmentManager, WordDetailFragment.TAG)
         }
-        wordsViewModel.liveDataListWords.observe(viewLifecycleOwner){
+        educationViewModel.liveDataListWords.observe(viewLifecycleOwner){
             adapter.setDataList(it)
         }
         recyclerView.adapter = adapter

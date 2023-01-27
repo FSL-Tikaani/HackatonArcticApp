@@ -1,4 +1,4 @@
-package com.example.arcticapp.ui.suggestions
+package com.example.arcticapp.ui.translator
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,21 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.arcticappfinal.databinding.FragmentSuggestionsBinding
+import com.example.arcticappfinal.databinding.FragmentTranslatorBinding
 
-class SuggestionsFragment : Fragment() {
+class TranslatorFragment : Fragment() {
 
-    private var binding: FragmentSuggestionsBinding? = null
+    private var binding: FragmentTranslatorBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val suggestionsViewModel =
-            ViewModelProvider(this)[SuggestionsViewModel::class.java]
+        val translatorViewModel =
+            ViewModelProvider(this)[TranslatorViewModel::class.java]
 
-        binding = FragmentSuggestionsBinding.inflate(inflater, container, false)
+        binding = FragmentTranslatorBinding.inflate(inflater, container, false)
 
         return binding!!.root
     }

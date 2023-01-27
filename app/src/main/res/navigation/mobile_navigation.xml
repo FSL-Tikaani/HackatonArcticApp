@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_words">
+    app:startDestination="@id/navigation_education">
 
     <fragment
-        android:id="@+id/navigation_words"
-        android:name="com.example.arcticapp.ui.words.WordsFragment"
-        android:label="@string/title_words"
-        tools:layout="@layout/fragment_words" />
+        android:id="@+id/navigation_education"
+        android:name="com.example.arcticapp.ui.education.EducationFragment"
+        android:label="@string/title_education"
+        tools:layout="@layout/fragment_education" />
 
     <fragment
-        android:id="@+id/navigation_phrases"
-        android:name="com.example.arcticapp.ui.phrases.PhrasesFragment"
-        android:label="@string/title_phrases"
-        tools:layout="@layout/fragment_phrases" />
+        android:id="@+id/navigation_vocabulary"
+        android:name="com.example.arcticapp.ui.vocabulary.VocabularyFragment"
+        android:label="@string/title_vocabulary"
+        tools:layout="@layout/fragment_vocabulary" />
 
     <fragment
-        android:id="@+id/navigation_suggestions"
-        android:name="com.example.arcticapp.ui.suggestions.SuggestionsFragment"
-        android:label="@string/title_suggestions"
-        tools:layout="@layout/fragment_suggestions" />
+        android:id="@+id/navigation_translator"
+        android:name="com.example.arcticapp.ui.translator.TranslatorFragment"
+        android:label="@string/title_translator"
+        tools:layout="@layout/fragment_translator" />
 </navigation>

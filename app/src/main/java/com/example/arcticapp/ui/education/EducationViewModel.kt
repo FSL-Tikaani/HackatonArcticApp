@@ -1,4 +1,4 @@
-package com.example.arcticapp.ui.words
+package com.example.arcticapp.ui.education
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import com.example.arcticapp.data.api.API
 import com.example.arcticapp.data.models.WordModel
 import kotlinx.coroutines.launch
 
-class WordsViewModel : ViewModel() {
+class EducationViewModel : ViewModel() {
 
     val liveDataListWords: MutableLiveData<ArrayList<WordModel>> = MutableLiveData()
 

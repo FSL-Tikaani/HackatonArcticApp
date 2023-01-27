@@ -2,18 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_words"
-        android:icon="@drawable/ic_baseline_text_format_24"
-        android:title="Слова" />
+        android:id="@+id/navigation_education"
+        android:icon="@drawable/ic_baseline_book_24"
+        android:title="@string/title_education" />
 
     <item
-        android:id="@+id/navigation_phrases"
-        android:icon="@drawable/ic_baseline_text_format_24"
-        android:title="Словосочетания" />
+        android:id="@+id/navigation_vocabulary"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="@string/title_vocabulary" />
 
     <item
-        android:id="@+id/navigation_suggestions"
-        android:icon="@drawable/ic_baseline_text_format_24"
-        android:title="Предложения" />
-
+        android:id="@+id/navigation_translator"
+        android:icon="@drawable/ic_baseline_g_translate_24"
+        android:title="@string/title_translator" />
 </menu>

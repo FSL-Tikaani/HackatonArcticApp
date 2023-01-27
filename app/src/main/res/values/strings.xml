@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ArcticApp</string>
-    <string name="title_words">Слова</string>
-    <string name="title_phrases">Словосочетания</string>
-    <string name="title_suggestions">Предложения</string>
+    <string name="title_education">Обучение</string>
+    <string name="title_vocabulary">Словарь</string>
+    <string name="title_translator">Переводчик</string>
 </resources>

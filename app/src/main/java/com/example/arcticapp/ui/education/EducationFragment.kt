@@ -1,4 +1,4 @@
-package com.example.arcticapp.ui.phrases
+package com.example.arcticapp.ui.education
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,20 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.arcticappfinal.databinding.FragmentPhrasesBinding
+import com.example.arcticappfinal.databinding.FragmentEducationBinding
 
-class PhrasesFragment : Fragment() {
-    private var binding: FragmentPhrasesBinding? = null
+class EducationFragment : Fragment() {
+
+    private var binding: FragmentEducationBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val phrasesViewModel =
-            ViewModelProvider(this)[PhrasesViewModel::class.java]
+        val educationViewModel =
+            ViewModelProvider(this)[EducationViewModel::class.java]
 
-        binding = FragmentPhrasesBinding.inflate(inflater, container, false)
+        binding = FragmentEducationBinding.inflate(inflater, container, false)
 
         return binding!!.root
     }
