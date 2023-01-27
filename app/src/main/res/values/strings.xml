@@ -3,4 +3,5 @@
     <string name="title_education">Обучение</string>
     <string name="title_vocabulary">Словарь</string>
     <string name="title_translator">Переводчик</string>
+    <string name="word_translate">Перевод</string>
 </resources>
