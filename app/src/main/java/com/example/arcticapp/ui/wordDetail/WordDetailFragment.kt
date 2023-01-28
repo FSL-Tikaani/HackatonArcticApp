@@ -1,6 +1,7 @@
 package com.example.arcticapp.ui.wordDetail
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import java.util.*
 
 class WordDetailFragment(
     private val word: String
@@ -25,7 +27,7 @@ class WordDetailFragment(
     }
     private lateinit var binding: FragmentWordDetailBinding
     private lateinit var viewModel: WordDetailViewModel
-    private lateinit var audioPlayer: ExoPlayer
+    private lateinit var tts: TextToSpeech
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,50 +35,16 @@ class WordDetailFragment(
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWordDetailBinding.inflate(inflater)
-        audioPlayer = createAudioPlayer()
         viewModel = ViewModelProvider(this)[WordDetailViewModel::class.java]
         viewModel.loadWord(word)
+        tts = TextToSpeech(requireContext()) {
+            tts.language = Locale("ru")
+        }
         binding.listenButton.setOnClickListener {
-            onPlayButtonClicked()
+            tts.speak("мэнду", TextToSpeech.QUEUE_FLUSH, null, "")
         }
         subscribeToModel()
         return binding.root
-    }
-
-    private fun onPlayButtonClicked() {
-        if (audioPlayer.isPlaying) {
-            binding.listenButton
-                .setImageDrawable(ContextCompat.getDrawable(requireContext(),
-                    R.drawable.ic_baseline_play_arrow_24))
-            audioPlayer.pause()
-            return
-        }
-        if (!audioPlayer.isPlaying) {
-            audioPlayer.play()
-            binding.listenButton
-                .setImageDrawable(ContextCompat.getDrawable(requireContext(),
-                    R.drawable.ic_baseline_pause_24))
-            return
-        }
-    }
-
-    private fun createAudioPlayer(): ExoPlayer = ExoPlayer.Builder(requireContext())
-        .build().apply {
-            setMediaItem(MediaItem.fromUri("https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/a.mp3?alt=media&token=9a129ba3-4abb-42fa-b345-30544694375c"))
-            prepare()
-            addListener(object: Player.Listener {
-                override fun onIsPlayingChanged(isPlaying: Boolean) {
-                    if (audioPlayer.playbackState == ExoPlayer.STATE_ENDED) {
-                        audioPlayer.seekTo(0)
-                        audioPlayer.playWhenReady = false
-                        context?.let {
-                            binding.listenButton
-                                .setImageDrawable(ContextCompat.getDrawable(requireContext(),
-                                    R.drawable.ic_baseline_play_arrow_24))
-                        }
-                    }
-                }
-            })
     }
 
     private fun subscribeToModel() {

@@ -28,12 +28,9 @@ class VocabularyFragment : Fragment() {
             ViewModelProvider(this)[EducationViewModel::class.java]
 
         binding = FragmentVocabularyBinding.inflate(inflater, container, false)
-        //inint recycler view
         recyclerView = binding!!.recyclerViewWords
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = WordsAdapter{ word ->
-            WordDetailFragment(word).show(childFragmentManager, WordDetailFragment.TAG)
-        }
+        adapter = WordsAdapter()
         educationViewModel.liveDataListWords.observe(viewLifecycleOwner){
             adapter.setDataList(it)
         }

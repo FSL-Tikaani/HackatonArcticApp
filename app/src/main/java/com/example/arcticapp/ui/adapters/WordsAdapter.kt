@@ -1,17 +1,21 @@
 package com.example.arcticapp.ui.adapters
 
 import android.annotation.SuppressLint
+import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.arcticapp.Extensions.Companion.toPx
 import com.example.arcticapp.data.models.WordModel
 import com.example.arcticappfinal.R
+import com.example.arcticappfinal.databinding.FragmentWordDetailBinding
+import com.example.arcticappfinal.databinding.WordItemBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
-class WordsAdapter(
-    private val wordClicked: (word: String) -> Unit
-) : RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
+class WordsAdapter: RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
     private var dataList = emptyList<WordModel>()
 
@@ -21,29 +25,29 @@ class WordsAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        var tvWord: TextView
-        var tvTranslate: TextView
+    class ViewHolder(private val binding: WordItemBinding)
+        : RecyclerView.ViewHolder(binding.root) {
+        private lateinit var tts: TextToSpeech
 
-        init {
-            tvWord = itemView.findViewById(R.id.tv_card_view_word)
-            tvTranslate = itemView.findViewById(R.id.tv_card_view_translate)
+        fun bind(word: WordModel) {
+            binding.original.text = word.originalWord
+            binding.translation.text = word.translation
+            tts = TextToSpeech(binding.root.context) {
+                tts.language = Locale("ru")
+            }
+            binding.listenButton.setOnClickListener {
+                tts.speak(word.originalWord, TextToSpeech.QUEUE_FLUSH, null, "")
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_view_words, parent, false))
+        ViewHolder(WordItemBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataList[position]
-
-        holder.tvWord.text = item.originalWord
-        holder.tvTranslate.text = item.translation
-
-        holder.itemView.setOnClickListener {
-            wordClicked(dataList[position].originalWord)
-        }
+        holder.bind(item)
     }
 
     override fun getItemCount(): Int {
