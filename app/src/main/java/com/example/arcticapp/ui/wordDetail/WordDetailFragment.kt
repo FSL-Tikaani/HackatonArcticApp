@@ -5,17 +5,9 @@ import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager.LayoutParams
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.arcticapp.data.models.WordModel
-import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.FragmentWordDetailBinding
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.Player
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.*
 
