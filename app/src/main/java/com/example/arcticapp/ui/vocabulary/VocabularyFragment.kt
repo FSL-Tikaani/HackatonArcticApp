@@ -25,13 +25,13 @@ class VocabularyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val educationViewModel =
-            ViewModelProvider(this)[EducationViewModel::class.java]
+            ViewModelProvider(this)[VocabularyViewModel::class.java]
 
         binding = FragmentVocabularyBinding.inflate(inflater, container, false)
         recyclerView = binding!!.recyclerViewWords
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = WordsAdapter()
-        educationViewModel.liveDataListWords.observe(viewLifecycleOwner){
+        educationViewModel.liveDataListVocabulary.observe(viewLifecycleOwner){
             adapter.setDataList(it)
         }
         recyclerView.adapter = adapter

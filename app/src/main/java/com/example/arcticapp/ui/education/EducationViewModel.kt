@@ -4,12 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.arcticapp.data.api.API
+import com.example.arcticapp.data.models.EducationItemModel
 import com.example.arcticapp.data.models.WordModel
 import kotlinx.coroutines.launch
 
 class EducationViewModel : ViewModel() {
 
-    val liveDataListWords: MutableLiveData<ArrayList<WordModel>> = MutableLiveData()
+    val liveDataListItemsEducation: MutableLiveData<ArrayList<EducationItemModel>> = MutableLiveData()
 
     init {
         getDataListFromDatabase()
@@ -17,16 +18,16 @@ class EducationViewModel : ViewModel() {
 
     private fun getDataListFromDatabase(){
         viewModelScope.launch {
-            val dataList = ArrayList<WordModel>()
+            val dataList = ArrayList<EducationItemModel>()
 
-            val result = API.getWordsList("All")
+            val result = API.getEducationItems()
 
-            for(item in result!!.documents){
-                val modelItem = item.toObject(WordModel::class.java)
+            for(item in result!!.children){
+                val modelItem = item.getValue(EducationItemModel::class.java)
                 dataList.add(modelItem!!)
             }
 
-            liveDataListWords.value = dataList
+            liveDataListItemsEducation.value = dataList
         }
     }
 }
