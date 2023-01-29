@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.arcticapp.data.models.EducationItemModel
 import com.example.arcticappfinal.databinding.EducationItemBinding
 
-class EducationAdapter: RecyclerView.Adapter<EducationAdapter.ViewHolder>(){
+class EducationAdapter(private val clickedItem: (item: EducationItemModel) -> Unit): RecyclerView.Adapter<EducationAdapter.ViewHolder>(){
 
      private var dataList = emptyList<EducationItemModel>()
 
@@ -18,18 +18,19 @@ class EducationAdapter: RecyclerView.Adapter<EducationAdapter.ViewHolder>(){
           notifyDataSetChanged()
      }
 
-     class ViewHolder(private val binding: EducationItemBinding):
+     class ViewHolder(private val binding: EducationItemBinding, private val clickedItem: (model: EducationItemModel) -> Unit):
           RecyclerView.ViewHolder(binding.root) {
           fun bind(educationItem: EducationItemModel) {
                binding.tvItemEducation.text = educationItem.name
                Glide.with(binding.root).load(educationItem.icon).into(binding.imgItemEducation)
+               binding.root.setOnClickListener{clickedItem(educationItem)}
           }
      }
 
      override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
           ViewHolder(
                EducationItemBinding
-                    .inflate(LayoutInflater.from(parent.context), parent, false)
+                    .inflate(LayoutInflater.from(parent.context), parent, false), clickedItem
           )
 
      override fun onBindViewHolder(holder: ViewHolder, position: Int) {

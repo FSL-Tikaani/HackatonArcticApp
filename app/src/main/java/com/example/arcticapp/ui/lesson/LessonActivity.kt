@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.arcticappfinal.R
@@ -17,6 +18,13 @@ class LessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLessonBinding.inflate(layoutInflater)
+
+        val idItem = intent.getStringExtra("idEducationItem")
+
+        title = idItem
+
+        Toast.makeText(this, idItem, Toast.LENGTH_SHORT).show()
+
         adapter = LessonTabAdapter(this, "")
         binding.pager.adapter = adapter
         binding.buttonTab1.setOnClickListener {

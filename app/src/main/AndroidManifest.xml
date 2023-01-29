@@ -29,6 +29,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity android:name="com.example.arcticapp.ui.lesson.LessonActivity">
+
+        </activity>
     </application>
 
 </manifest>
