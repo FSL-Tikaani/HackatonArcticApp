@@ -6,4 +6,9 @@
     <string name="word_translate">Перевод</string>
     <string name="word_enech">Слово на энецком</string>
     <string name="word_rus">Слово на русском</string>
+    <string name="theory">Теория</string>
+    <string name="practice">Практика</string>
+    <string name="test">Тест</string>
+    <string name="sentences">Составление предложений</string>
+    <string name="comparing">Проверка словаря</string>
 </resources>

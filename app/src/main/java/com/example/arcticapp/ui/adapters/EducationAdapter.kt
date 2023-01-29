@@ -18,19 +18,19 @@ class EducationAdapter: RecyclerView.Adapter<EducationAdapter.ViewHolder>(){
           notifyDataSetChanged()
      }
 
-     class ViewHolder(private val binding: EducationItemBinding) : RecyclerView.ViewHolder(binding.root) {
+     class ViewHolder(private val binding: EducationItemBinding):
+          RecyclerView.ViewHolder(binding.root) {
           fun bind(educationItem: EducationItemModel) {
                binding.tvItemEducation.text = educationItem.name
                Glide.with(binding.root).load(educationItem.icon).into(binding.imgItemEducation)
           }
      }
 
-     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-          return ViewHolder(
+     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+          ViewHolder(
                EducationItemBinding
                     .inflate(LayoutInflater.from(parent.context), parent, false)
           )
-     }
 
      override fun onBindViewHolder(holder: ViewHolder, position: Int) {
           val item = dataList[position]

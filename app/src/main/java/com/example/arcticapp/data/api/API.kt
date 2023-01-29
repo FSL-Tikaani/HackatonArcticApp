@@ -1,7 +1,8 @@
 package com.example.arcticapp.data.api
 
-import com.example.arcticapp.data.models.LessonTheory
-import com.example.arcticapp.data.models.WordModel
+import com.example.arcticapp.Extensions.Companion.serializeToMap
+import com.example.arcticapp.data.models.*
+import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -39,7 +40,21 @@ class API {
                 "слово приветствия",
                 ""
             )
-        // TODO: нормальный подбор слов из базы
+
+        fun getPracticeList(lessonID: String): ArrayList<PracticeTask> =
+            arrayListOf(
+                PracticeTask(TaskAdapter.TASK_COMPARE,
+                    CompareTask(
+                        arrayListOf(
+                            CompareWord("слово на энецком", "привет"),
+                            CompareWord("слово на энецком2", "пока")
+                        ),
+                        arrayListOf("привет", "пока")
+                    ).serializeToMap() as HashMap<Any, Any>
+                )
+            )
+
+        // TODO: нормальная работа с бд
 //            FirebaseFirestore.getInstance().collection("Words")
 //                .document(originalWord).get().await()
     }

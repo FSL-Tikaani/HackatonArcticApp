@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.ActivityLessonBinding
 
@@ -16,7 +17,7 @@ class LessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLessonBinding.inflate(layoutInflater)
-        adapter = LessonTabAdapter(this)
+        adapter = LessonTabAdapter(this, "")
         binding.pager.adapter = adapter
         binding.buttonTab1.setOnClickListener {
             onTabClicked(0)
@@ -24,13 +25,18 @@ class LessonActivity : AppCompatActivity() {
         binding.buttonTab2.setOnClickListener {
             onTabClicked(1)
         }
+        binding.pager.registerOnPageChangeCallback(object: OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                onTabClicked(position, false)
+            }
+        })
         textColor = binding.tabText1.textColors
         setContentView(binding.root)
         onTabClicked(0)
     }
 
-    private fun onTabClicked(position: Int) {
-        binding.pager.setCurrentItem(position, true)
+    private fun onTabClicked(position: Int, changeTab: Boolean = true) {
+        if (changeTab) binding.pager.setCurrentItem(position, true)
         if (position == 0) {
             binding.buttonTab1.setBackgroundResource(R.drawable.tab_background_selected)
             binding.buttonTab2.setBackgroundResource(R.drawable.tab_background)

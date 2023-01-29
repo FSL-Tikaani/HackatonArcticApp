@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.FragmentTheoryBinding
 
-class TheoryFragment : Fragment() {
+class TheoryFragment(
+    private val lessonID: String
+) : Fragment() {
     private lateinit var binding: FragmentTheoryBinding
     private lateinit var viewModel: TheoryViewModel
 
@@ -22,7 +24,7 @@ class TheoryFragment : Fragment() {
         viewModel.theory.observe(viewLifecycleOwner) { theory ->
             binding.description.text = theory.description
         }
-        viewModel.loadTheory("")
+        viewModel.loadTheory(lessonID)
         return binding.root
     }
 
