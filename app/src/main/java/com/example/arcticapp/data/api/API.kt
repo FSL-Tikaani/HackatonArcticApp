@@ -54,6 +54,16 @@ class API {
                 )
             )
 
+        // Этот метод не нужно исправлять, он тестовый
+        fun getTask(lessonID: String): CompareTask =
+            CompareTask(
+                arrayListOf(
+                    CompareWord("слово на энецком", "привет"),
+                    CompareWord("слово на энецком2", "пока")
+                ),
+                arrayListOf("привет", "пока")
+            )
+
         // TODO: нормальная работа с бд
 //            FirebaseFirestore.getInstance().collection("Words")
 //                .document(originalWord).get().await()

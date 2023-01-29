@@ -2,11 +2,51 @@ package com.example.arcticapp.ui.task_compare
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.arcticapp.ui.adapters.DragListener
+import com.example.arcticapp.ui.adapters.WordCompareAdapter
+import com.example.arcticapp.ui.adapters.WordDraggableAdapter
 import com.example.arcticappfinal.R
+import com.example.arcticappfinal.databinding.ActivityTaskCompareBinding
 
 class TaskCompareActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityTaskCompareBinding
+    private lateinit var viewModel: TaskCompareViewModel
+    private lateinit var wordsAdapter: WordDraggableAdapter
+    private lateinit var wordsCompareAdapter: WordCompareAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_task_compare)
+        binding = ActivityTaskCompareBinding.inflate(layoutInflater)
+        wordsAdapter = WordDraggableAdapter()
+        binding.wordsList.layoutManager = GridLayoutManager(this, 2)
+        binding.wordsList.adapter = wordsAdapter
+        binding.wordsList.setOnDragListener(DragListener())
+        wordsCompareAdapter = WordCompareAdapter(
+            { word, position ->
+                val holder = binding.compareList.findViewHolderForAdapterPosition(position)
+                    as WordCompareAdapter.ViewHolder
+                holder.setTranslationLabel("Перевод: $word")
+            },
+            { position ->
+                val holder = binding.compareList.findViewHolderForAdapterPosition(position)
+                        as WordCompareAdapter.ViewHolder
+                holder.setTranslationLabel("Неверный перевод!")
+            }
+        )
+        binding.compareList.layoutManager = LinearLayoutManager(this)
+        binding.compareList.adapter = wordsCompareAdapter
+        binding.compareList.setOnDragListener(DragListener())
+        viewModel = ViewModelProvider(this)[TaskCompareViewModel::class.java]
+        viewModel.task.observe(this) { task ->
+            wordsAdapter.setDataset(task.rusWords)
+            wordsCompareAdapter.setDataset(task.enechWords)
+        }
+        viewModel.loadTask("")
+        setContentView(binding.root)
     }
 }
