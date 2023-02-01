@@ -1,16 +1,16 @@
-package com.example.arcticapp.ui.task_compare
+package com.example.arcticapp.ui.taskСompare
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.ui.adapters.DragListener
 import com.example.arcticapp.ui.adapters.WordCompareAdapter
 import com.example.arcticapp.ui.adapters.WordDraggableAdapter
-import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.ActivityTaskCompareBinding
+import kotlin.math.max
 
 class TaskCompareActivity : AppCompatActivity() {
 
@@ -18,6 +18,7 @@ class TaskCompareActivity : AppCompatActivity() {
     private lateinit var viewModel: TaskCompareViewModel
     private lateinit var wordsAdapter: WordDraggableAdapter
     private lateinit var wordsCompareAdapter: WordCompareAdapter
+    private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +32,13 @@ class TaskCompareActivity : AppCompatActivity() {
                 val holder = binding.compareList.findViewHolderForAdapterPosition(position)
                     as WordCompareAdapter.ViewHolder
                 holder.setTranslationLabel("Перевод: $word")
+                onWordComparingDone()
             },
             { position ->
                 val holder = binding.compareList.findViewHolderForAdapterPosition(position)
                         as WordCompareAdapter.ViewHolder
                 holder.setTranslationLabel("Неверный перевод!")
+                score = max(score - 1, 0)
             }
         )
         binding.compareList.layoutManager = LinearLayoutManager(this)
@@ -44,9 +47,18 @@ class TaskCompareActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[TaskCompareViewModel::class.java]
         viewModel.task.observe(this) { task ->
             wordsAdapter.setDataset(task.rusWords)
+            score = task.rusWords.size
             wordsCompareAdapter.setDataset(task.enechWords)
         }
         viewModel.loadTask("")
         setContentView(binding.root)
     }
+
+    private fun onWordComparingDone() {
+        if (isDone()) {
+
+        }
+    }
+
+    private fun isDone(): Boolean = wordsAdapter.itemCount == 0
 }

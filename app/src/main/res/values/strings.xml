@@ -11,4 +11,10 @@
     <string name="test">Тест</string>
     <string name="sentences">Составление предложений</string>
     <string name="comparing">Проверка словаря</string>
+    <string name="taskCompleted">Задание выполнено!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_menu">Меню</string>
+    <string name="title_account">Аккаунт</string>
+    <string name="welcomeText">Добро пожаловать!</string>
 </resources>

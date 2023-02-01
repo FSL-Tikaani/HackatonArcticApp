@@ -1,4 +1,4 @@
-package com.example.arcticapp.ui.task_compare
+package com.example.arcticapp.ui.taskСompare
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

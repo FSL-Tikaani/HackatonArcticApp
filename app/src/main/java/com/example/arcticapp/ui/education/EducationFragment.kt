@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.data.api.API
@@ -32,16 +33,17 @@ class EducationFragment : Fragment() {
             ViewModelProvider(this)[EducationViewModel::class.java]
 
         binding = FragmentEducationBinding.inflate(inflater, container, false)
+        binding?.let {
+            it.cross.setOnClickListener { view ->
+                Navigation.findNavController(view).popBackStack()
+            }
+        }
 
-        //recycler view init
         recyclerView = binding!!.recyclerViewEducation
         recyclerView.layoutManager = GridLayoutManager(binding!!.root.context, 2)
         adapter = EducationAdapter { item ->
-            //Toast.makeText(context, "Item selected: ${item.id}", Toast.LENGTH_SHORT).show()
 
             EducationCustomBottomList(item){
-                //onClcik btn Bottom Sheet
-                //Toast.makeText(context, "launch $it", Toast.LENGTH_SHORT).show()
                 val intent = Intent(context, LessonActivity::class.java)
                 intent.putExtra("idEducationItem", item.id)
                 startActivity(intent)

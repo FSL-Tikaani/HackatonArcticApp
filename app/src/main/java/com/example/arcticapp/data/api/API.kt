@@ -58,10 +58,12 @@ class API {
         fun getTask(lessonID: String): CompareTask =
             CompareTask(
                 arrayListOf(
-                    CompareWord("слово на энецком", "привет"),
-                    CompareWord("слово на энецком2", "пока")
+                    CompareWord("Уу'' нил обу", "Как твое имя?"),
+                    CompareWord("Модь ним", "Меня зовут"),
+                    CompareWord("Дорова най''", "Здравствуйте"),
+                    CompareWord("Локичу най", "До свидания")
                 ),
-                arrayListOf("привет", "пока")
+                arrayListOf("Как твое имя?", "Меня зовут", "Здравствуйте", "До свидания")
             )
 
         // TODO: нормальная работа с бд

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.arcticapp.data.models.EducationItemModel
-import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.BottomListEducationBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
