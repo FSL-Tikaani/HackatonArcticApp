@@ -22,7 +22,7 @@ class EducationCustomBottomList(private val educationItemModel: EducationItemMod
 
         //add data to tv
         binding.tvBottomListEducationNameLesson.text = educationItemModel.name
-        binding.tvBottomListEducationProgress.text = "10/10"
+        binding.tvBottomListEducationProgress.text = "Пройдено: 5/10"
         binding.tvBottomListEducationDescription.text = educationItemModel.description
         binding.btnBottomListEducationStartEducation.setOnClickListener { clickedItem (educationItemModel.id) }
 
