@@ -20,7 +20,7 @@ class TaskSentenceViewModel: ViewModel() {
     }
 
     fun initializeScoreCounter() {
-        //score.postValue(task.value.)
+        score.postValue(task.value?.sentences?.size)
     }
 
     fun decreaseScore() {
