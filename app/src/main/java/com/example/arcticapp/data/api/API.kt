@@ -66,6 +66,17 @@ class API {
                 arrayListOf("Как твое имя?", "Меня зовут", "Здравствуйте", "До свидания")
             )
 
+        fun getSentenceTask(lessonID: String): SentenceTask =
+            SentenceTask(
+                arrayListOf(
+                    SentenceItem(
+                        "афигеть рыжий кот",
+                        "хуй пизда сперма пирожки",
+                        arrayListOf("сперма", "пизда", "пирожки", "хуй")
+                    )
+                )
+            )
+
         // TODO: нормальная работа с бд
 //            FirebaseFirestore.getInstance().collection("Words")
 //                .document(originalWord).get().await()
