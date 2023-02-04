@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,12 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ArcticApp"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name="com.example.arcticapp.ui.taskSentence.TaskSentenceActivity"
-            android:exported="true"
-            android:label="@string/title_activity_task_sentence"
-            android:theme="@style/Theme.ArcticApp.NoActionBar" >
+            android:name="com.example.arcticapp.ui.taskTest.TaskTestActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,10 +28,20 @@
                 android:value="" />
         </activity>
         <activity
+            android:name="com.example.arcticapp.ui.taskSentence.TaskSentenceActivity"
+            android:exported="true"
+            android:label="@string/title_activity_task_sentence"
+            android:theme="@style/Theme.ArcticApp.NoActionBar">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name="com.example.arcticapp.ui.taskСompare.TaskCompareActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -41,7 +49,7 @@
         <activity
             android:name="com.example.arcticapp.ui.lesson.LessonActivity"
             android:exported="true"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -49,8 +57,7 @@
         <activity
             android:name="com.example.arcticapp.ui.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait" >
-
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -59,7 +66,7 @@
             android:name="com.example.arcticapp.ui.congratulations.CongratulationsActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

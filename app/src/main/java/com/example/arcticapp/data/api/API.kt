@@ -72,32 +72,53 @@ class API {
                     SentenceItem(
                         "афигеть рыжий кот",
                         "хуй пизда сперма пирожки",
-                        arrayListOf("сперма", "пизда", "пирожки", "хуй")
+                        arrayListOf("1", "2", "3", "4")
                     ),
                     SentenceItem(
                         "афигеть рыжий кот",
                         "хуй пизда сперма пирожки",
-                        arrayListOf("сперма", "пизда", "пирожки", "хуй")
+                        arrayListOf("спеdfрмsdfgsdfgа1", "спеdfрмsdfgsdfgа2", "спеdfрмsdfgsdfgа3", "спеdfрмsdfgsdfgа4")
                     ),
                     SentenceItem(
                         "афигеть рыжий кот",
                         "хуй пизда сперма пирожки",
-                        arrayListOf("сперма", "пизда", "пирожки", "хуй")
+                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
                     ),
                     SentenceItem(
                         "афигеть рыжий кот",
                         "хуй пизда сперма пирожки",
-                        arrayListOf("сперма", "пизда", "пирожки", "хуй")
+                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
                     ),
                     SentenceItem(
                         "афигеть рыжий кот",
                         "хуй пизда сперма пирожки",
-                        arrayListOf("сперма", "пизда", "пирожки", "хуй")
+                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
                     ),
                     SentenceItem(
                         "афигеть рыжий кот",
                         "хуй пизда сперма пирожки",
-                        arrayListOf("сперма", "пизда", "пирожки", "хуй")
+                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
+                    )
+                )
+            )
+
+        fun getTestTask(taskID: String) =
+            TestTask(
+                arrayListOf(
+                    TestItem(
+                        "Как какать?",
+                        arrayListOf("Никак", "Легко", "Сложно"),
+                        0
+                    ),
+                    TestItem(
+                        "Как какать?",
+                        arrayListOf("Никак", "Легко", "Сложно"),
+                        0
+                    ),
+                    TestItem(
+                        "Как какать?",
+                        arrayListOf("Никак", "Легко", "Сложно"),
+                        0
                     )
                 )
             )

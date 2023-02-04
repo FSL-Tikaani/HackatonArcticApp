@@ -22,18 +22,33 @@ class SentenceBuilderAdapter(
 
         private lateinit var adapter: WordClickableAdapter
 
+        @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
         fun bind(
             sentenceItem: SentenceItem,
             onWordTipClicked: (word: String) -> Unit,
             index: Int
         ) {
-            // TODO: Обработка нажатия
-            adapter = WordClickableAdapter(onWordTipClicked) {}
+            adapter = WordClickableAdapter(
+                onWordTipClicked,
+                {onWordInserted(it)},
+                { binding.words.post { it.run() }  },
+                binding.enechSentence)
             adapter.setDataSet(sentenceItem.words)
             binding.words.layoutManager =
                 FlexboxLayoutManager(itemView.context, FlexDirection.ROW, FlexWrap.WRAP)
             binding.words.adapter = adapter
             binding.russianSentence.text = "$index: ${sentenceItem.russianSentence}"
+            binding.refresh.setOnClickListener {
+                binding.enechSentence.text = ""
+                binding.words.post {
+                    adapter.refresh()
+                }
+            }
+        }
+
+        @SuppressLint("SetTextI18n")
+        private fun onWordInserted(word: String) {
+            binding.enechSentence.text = "${binding.enechSentence.text} $word"
         }
     }
 

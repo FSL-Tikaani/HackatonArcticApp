@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/cross"
             android:layout_width="24dp"
@@ -58,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:clipChildren="false"
             app:layout_constraintTop_toBottomOf="@+id/heading" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
