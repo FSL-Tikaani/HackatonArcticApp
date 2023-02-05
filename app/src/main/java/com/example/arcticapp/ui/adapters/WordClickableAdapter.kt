@@ -72,6 +72,10 @@ class WordClickableAdapter(
             wordItem.animate()
                 .translationX(0f).translationY(0f).alpha(1f).duration = 0L
         }
+
+        fun deactivateWordButton() {
+            binding.root.setOnClickListener(null)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

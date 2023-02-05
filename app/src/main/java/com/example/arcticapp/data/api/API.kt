@@ -70,35 +70,15 @@ class API {
             SentenceTask(
                 arrayListOf(
                     SentenceItem(
-                        "афигеть рыжий кот",
-                        "хуй пизда сперма пирожки",
+                        "Здесь будет предложение на русском",
+                        "2 1 3 4",
                         arrayListOf("1", "2", "3", "4")
                     ),
                     SentenceItem(
-                        "афигеть рыжий кот",
-                        "хуй пизда сперма пирожки",
-                        arrayListOf("спеdfрмsdfgsdfgа1", "спеdfрмsdfgsdfgа2", "спеdfрмsdfgsdfgа3", "спеdfрмsdfgsdfgа4")
+                        "Здесь будет предложение на русском",
+                        "Правильное предложение",
+                        arrayListOf("слово1", "слово2", "слово3", "слово4")
                     ),
-                    SentenceItem(
-                        "афигеть рыжий кот",
-                        "хуй пизда сперма пирожки",
-                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
-                    ),
-                    SentenceItem(
-                        "афигеть рыжий кот",
-                        "хуй пизда сперма пирожки",
-                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
-                    ),
-                    SentenceItem(
-                        "афигеть рыжий кот",
-                        "хуй пизда сперма пирожки",
-                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
-                    ),
-                    SentenceItem(
-                        "афигеть рыжий кот",
-                        "хуй пизда сперма пирожки",
-                        arrayListOf("спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа", "спеdfрмsdfgsdfgа")
-                    )
                 )
             )
 

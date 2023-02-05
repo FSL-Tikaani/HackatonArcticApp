@@ -28,4 +28,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="task_sentence">Составление предложений</string>
     <string name="task_test">Тест</string>
+    <string name="check">Проверить</string>
+    <string name="correct">Правильно!</string>
+    <string name="finish">Закончить</string>
 </resources>
