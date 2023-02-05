@@ -1,14 +1,19 @@
 package com.example.arcticapp.ui.taskСompare
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.arcticapp.ui.MainActivity
 import com.example.arcticapp.ui.adapters.DragListener
 import com.example.arcticapp.ui.adapters.WordCompareAdapter
 import com.example.arcticapp.ui.adapters.WordDraggableAdapter
+import com.example.arcticapp.ui.dialogs.ExitDialogFragment
+import com.example.arcticapp.ui.dialogs.QuestionDialogFragment
+import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.ActivityTaskCompareBinding
 import kotlin.math.max
 
@@ -50,8 +55,26 @@ class TaskCompareActivity : AppCompatActivity() {
             score = task.rusWords.size
             wordsCompareAdapter.setDataset(task.enechWords)
         }
+
         viewModel.loadTask("")
         setContentView(binding.root)
+
+        //on Click
+        binding.tip.setOnClickListener {
+            //reference
+            //передаём R.string.answer_text для подстановки в TextView DialogFragment
+            val myQuestionDialog = QuestionDialogFragment(R.string.answer_text)
+            val manager = supportFragmentManager
+            myQuestionDialog.show(manager, "")
+        }
+        //exit to ???
+        binding.cross.setOnClickListener {
+            val myExitDialog = ExitDialogFragment{
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+            val manager = supportFragmentManager
+            myExitDialog.show(manager, "")
+        }
     }
 
     private fun onWordComparingDone() {

@@ -1,10 +1,15 @@
 package com.example.arcticapp.ui.taskSentence
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.arcticapp.ui.MainActivity
 import com.example.arcticapp.ui.adapters.SentenceBuilderAdapter
+import com.example.arcticapp.ui.dialogs.ExitDialogFragment
+import com.example.arcticapp.ui.dialogs.QuestionDialogFragment
 import com.example.arcticapp.ui.wordDetail.WordDetailFragment
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.ActivityTaskSentenceBinding
@@ -38,6 +43,24 @@ class TaskSentenceActivity : AppCompatActivity() {
                 finishTask(score)
             }
         }
+
+        //on Click
+        binding.tip.setOnClickListener {
+            //reference
+            //передаём R.string.answer_text для подстановки в TextView DialogFragment
+            val myQuestionDialog = QuestionDialogFragment(R.string.answer_text)
+            val manager = supportFragmentManager
+            myQuestionDialog.show(manager, "")
+        }
+        //exit to ???
+        binding.cross.setOnClickListener {
+            val myExitDialog = ExitDialogFragment{
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+            val manager = supportFragmentManager
+            myExitDialog.show(manager, "")
+        }
+
         viewModel.loadTask("")
         setContentView(binding.root)
     }
