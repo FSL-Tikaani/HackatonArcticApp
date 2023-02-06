@@ -17,10 +17,9 @@ class EducationCustomBottomList(private val educationItemModel: EducationItemMod
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = BottomListEducationBinding.inflate(inflater)
 
-        //add data to tv
         binding.tvBottomListEducationNameLesson.text = educationItemModel.name
         binding.tvBottomListEducationProgress.text = "Пройдено: 5/10"
         binding.tvBottomListEducationDescription.text = educationItemModel.description

@@ -41,18 +41,11 @@ class API {
                 ""
             )
 
+        fun getLessonList(): ArrayList<EducationItemModel> =
+            TaskStorage.lessons
+
         fun getPracticeList(lessonID: String): ArrayList<PracticeTask> =
-            arrayListOf(
-                PracticeTask(TaskAdapter.TASK_COMPARE,
-                    CompareTask(
-                        arrayListOf(
-                            CompareWord("слово на энецком", "привет"),
-                            CompareWord("слово на энецком2", "пока")
-                        ),
-                        arrayListOf("привет", "пока")
-                    ).serializeToMap() as HashMap<Any, Any>
-                )
-            )
+            TaskStorage.lessonTasks[lessonID]!!
 
         // Этот метод не нужно исправлять, он тестовый
         fun getTask(lessonID: String): CompareTask =

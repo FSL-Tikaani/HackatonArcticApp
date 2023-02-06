@@ -9,7 +9,9 @@ import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.TaskItemBinding
 import java.util.ArrayList
 
-class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter(
+    private val onTaskClicked: (task: PracticeTask) -> Unit
+): RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     companion object {
         const val TASK_TEST = 0
         const val TASK_SENTENCE = 1
@@ -20,8 +22,14 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: TaskItemBinding):
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(practiceTask: PracticeTask) {
+        fun bind(
+            practiceTask: PracticeTask,
+            onTaskClicked: (task: PracticeTask) -> Unit
+        ) {
             binding.title.text = getTitleString(practiceTask.type)
+            binding.root.setOnClickListener {
+                onTaskClicked(practiceTask)
+            }
         }
         private fun getTitleString(taskType: Int): String = when(taskType) {
             TASK_TEST -> itemView.context.getString(R.string.test)
@@ -39,7 +47,7 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataSet[position]
-        holder.bind(item)
+        holder.bind(item) { onTaskClicked(it) }
     }
 
     override fun getItemCount(): Int = dataSet.size

@@ -35,4 +35,8 @@
     <!-- Strings used for QuestionDialogFragment -->
     <string name="answer_text">Это задание представляет собой сопоставление переводов из верхнего столбца с нижним.\n\nДля того чтобы сопоставить переводы, выберите перевод из верхнего списка, нажмите на него и удерживая палец на экране перетащите выбранный перевод до не переведённого предложения. После этого отпустите палец.
     </string>
+    <string name="result">"Результат: "</string>
+    <string name="restart">Перепройти</string>
+    <string name="quit">Вернуться в меню</string>
+    <string name="finish2">Завершить</string>
 </resources>
