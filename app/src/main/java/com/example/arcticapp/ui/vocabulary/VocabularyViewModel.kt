@@ -13,21 +13,15 @@ class VocabularyViewModel : ViewModel() {
     val liveDataListVocabulary: MutableLiveData<ArrayList<WordModel>> = MutableLiveData()
 
     init {
-        getDataListFromDatabase()
+        searchByName("All")
     }
 
-    private fun getDataListFromDatabase(){
+    fun searchByName(filter: String){
         viewModelScope.launch {
-            val dataList = ArrayList<WordModel>()
+            val result = API.getWordsList(filter)
 
-            val result = API.getWordsList("All")
-
-            for(item in result!!.documents){
-                val modelItem = item.toObject(WordModel::class.java)
-                dataList.add(modelItem!!)
-            }
-
-            liveDataListVocabulary.value = dataList
+            liveDataListVocabulary.value = result
         }
     }
+
 }

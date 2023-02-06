@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.arcticapp.data.models.WordModel
 import com.example.arcticapp.ui.adapters.WordsAdapter
 import com.example.arcticapp.ui.education.EducationViewModel
 import com.example.arcticapp.ui.wordDetail.WordDetailFragment
@@ -24,19 +28,32 @@ class VocabularyFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val educationViewModel =
+        val vocabularyViewModel =
             ViewModelProvider(this)[VocabularyViewModel::class.java]
 
         binding = FragmentVocabularyBinding.inflate(inflater, container, false)
         recyclerView = binding!!.recyclerViewWords
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = WordsAdapter()
-        educationViewModel.liveDataListVocabulary.observe(viewLifecycleOwner){
-            adapter.setDataList(it)
-        }
+
+        updateDataRecycler(vocabularyViewModel.liveDataListVocabulary)
+
         recyclerView.adapter = adapter
 
+        binding!!.btnSearch.setOnClickListener {
+            val dataSearch = binding!!.tvSearch.text.toString()
+
+            vocabularyViewModel.searchByName(dataSearch)
+            updateDataRecycler(vocabularyViewModel.liveDataListVocabulary)
+        }
+
         return binding!!.root
+    }
+
+    private fun updateDataRecycler(liveDataListVocabulary: MutableLiveData<ArrayList<WordModel>>){
+        liveDataListVocabulary.observe(viewLifecycleOwner){
+            adapter.setDataList(it)
+        }
     }
 
     override fun onDestroyView() {

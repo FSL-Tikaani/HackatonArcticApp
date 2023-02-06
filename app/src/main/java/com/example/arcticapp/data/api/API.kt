@@ -1,6 +1,7 @@
 package com.example.arcticapp.data.api
 
 import com.example.arcticapp.Extensions.Companion.serializeToMap
+import com.example.arcticapp.data.database.DictionaryStorage
 import com.example.arcticapp.data.models.*
 import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.google.firebase.database.DataSnapshot
@@ -15,12 +16,11 @@ class API {
             return FirebaseDatabase.getInstance().getReference("lessons").get().await()
         }
 
-        suspend fun getWordsList(filter: String): QuerySnapshot? {
-            return if (filter == "All"){
-                FirebaseFirestore.getInstance().collection("Words").get().await()
+        fun getWordsList(filter: String): ArrayList<WordModel> {
+            if (filter == "All"){
+                return DictionaryStorage.getAllWords()
             }else{
-                FirebaseFirestore.getInstance().collection("Words")
-                    .whereEqualTo("category", filter).get().await()
+                return DictionaryStorage.getWordsByName(filter)
             }
         }
 
