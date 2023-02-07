@@ -39,4 +39,5 @@
     <string name="restart">Перепройти</string>
     <string name="quit">Вернуться в меню</string>
     <string name="finish2">Завершить</string>
+    <string name="word_abc">Букварь</string>
 </resources>
