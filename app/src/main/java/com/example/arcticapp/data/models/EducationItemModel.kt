@@ -1,9 +1,11 @@
 package com.example.arcticapp.data.models
 
+import com.example.arcticappfinal.R
+
 data class EducationItemModel (
     val name: String = "",
     val description: String = "",
-    val icon: String = "",
+    val icon: Int = R.drawable.education_item_img,
     val id: String = "",
     val tasks: Int = 3
 )

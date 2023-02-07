@@ -18,16 +18,7 @@ class EducationViewModel : ViewModel() {
 
     private fun getDataListFromDatabase(){
         viewModelScope.launch {
-            val dataList = ArrayList<EducationItemModel>()
-
-            val result = API.getEducationItems()
-
-            for(item in result!!.children){
-                val modelItem = item.getValue(EducationItemModel::class.java)
-                dataList.add(modelItem!!)
-            }
-
-            liveDataListItemsEducation.value = dataList
+            liveDataListItemsEducation.postValue(API.getLessonList())
         }
     }
 }

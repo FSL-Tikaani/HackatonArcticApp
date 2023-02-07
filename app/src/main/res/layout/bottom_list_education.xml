@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/img_bottom_list_education_img_lesson"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:src="@drawable/education_item_img"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,31 +22,33 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="16dp"
         android:text="Название урока"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_bottom_list_education_progress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_bottom_list_education_img_lesson"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/img_bottom_list_education_img_lesson" />
 
     <TextView
         android:id="@+id/tv_bottom_list_education_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="Пройдено: 5/10"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_bottom_list_education_name_lesson"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bottom_list_education_name_lesson" />
+        android:textSize="16sp"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_bottom_list_education_img_lesson"
+        app:layout_constraintStart_toStartOf="@+id/tv_bottom_list_education_name_lesson" />
 
     <TextView
         android:id="@+id/tv_bottom_list_education_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="14dp"
         android:text="Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание Описание  Описание "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -55,8 +59,10 @@
         android:id="@+id/btn_bottom_list_education_start_education"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="36dp"
         android:text="Начать прохождение"
+        android:backgroundTint="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_bottom_list_education_description"
         app:layout_constraintStart_toStartOf="@+id/tv_bottom_list_education_description"

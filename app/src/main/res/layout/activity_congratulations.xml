@@ -12,17 +12,18 @@
         android:layout_height="72dp"
         android:alpha="0"
         android:rotation="36"
-        android:src="@drawable/like_hand_symbol_in_a_circle_svgrepo_com"
+        android:src="@drawable/ic_baseline_thumb_up_24"
         android:translationY="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401"
+        app:layout_constraintVertical_bias="0.35"
         tools:alpha="1"
         tools:rotation="0"
-        tools:translationY="0dp" />
+        tools:translationY="0dp"
+        app:tint="@color/purple_500" />
 
     <TextView
         android:id="@+id/congratulationText"
@@ -31,6 +32,7 @@
         android:text="@string/taskCompleted"
         android:textStyle="bold"
         android:textSize="18sp"
+        android:textColor="@color/black"
         android:layout_marginTop="12dp"
         android:alpha="0"
         tools:alpha="1"
@@ -39,5 +41,61 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/like" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/result"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="4dp"
+        android:alpha="0"
+        tools:alpha="1"
+        tools:translationY="0dp"
+        android:translationY="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/congratulationText" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/restart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/restart"
+        android:layout_marginHorizontal="8dp"
+        android:alpha="0"
+        tools:alpha="1"
+        tools:translationY="0dp"
+        android:translationY="18dp"
+        app:icon="@drawable/ic_baseline_refresh_24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/finish"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/finish2"
+        android:alpha="0"
+        tools:alpha="1"
+        tools:translationY="0dp"
+        android:translationY="18dp"
+        app:icon="@drawable/ic_baseline_check_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/result" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

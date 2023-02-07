@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arcticapp.ui.MainActivity
 import com.example.arcticapp.ui.adapters.SentenceBuilderAdapter
+import com.example.arcticapp.ui.congratulations.CongratulationsActivity
 import com.example.arcticapp.ui.dialogs.ExitDialogFragment
 import com.example.arcticapp.ui.dialogs.QuestionDialogFragment
 import com.example.arcticapp.ui.wordDetail.WordDetailFragment
@@ -78,6 +79,12 @@ class TaskSentenceActivity : AppCompatActivity() {
     }
 
     private fun finishTask(score: Int) {
-        // TODO: Переход к итогам
+        val maxScore = adapter.itemCount
+        startActivity(Intent(this, CongratulationsActivity::class.java)
+            .apply {
+                putExtra("score", score)
+                putExtra("maxscore", maxScore)
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            })
     }
 }

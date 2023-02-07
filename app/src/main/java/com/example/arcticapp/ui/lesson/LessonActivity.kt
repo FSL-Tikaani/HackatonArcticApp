@@ -19,13 +19,9 @@ class LessonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLessonBinding.inflate(layoutInflater)
 
-        val idItem = intent.getStringExtra("idEducationItem")
+        val idItem = intent.getStringExtra("idEducationItem")!!
 
-        title = idItem
-
-        Toast.makeText(this, idItem, Toast.LENGTH_SHORT).show()
-
-        adapter = LessonTabAdapter(this, "")
+        adapter = LessonTabAdapter(this, idItem)
         binding.pager.adapter = adapter
         binding.buttonTab1.setOnClickListener {
             onTabClicked(0)

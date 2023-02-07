@@ -63,8 +63,9 @@
         <activity
             android:name="com.example.arcticapp.ui.congratulations.CongratulationsActivity"
             android:exported="true"
+            android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.ArcticApp.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
