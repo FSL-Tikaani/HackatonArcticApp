@@ -19,7 +19,7 @@ class DictionaryStorage {
             val sortedWords = ArrayList<WordModel>()
 
             for(i in 0 until words.size){
-                if(words[i].originalWord == name || words[i].translation == name){
+                if(words[i].originalWord.contains(name) || words[i].translation.contains(name)){
                     sortedWords.add(words[i])
                 }
             }
