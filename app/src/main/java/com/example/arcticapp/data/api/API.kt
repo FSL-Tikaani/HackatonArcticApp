@@ -1,8 +1,8 @@
 package com.example.arcticapp.data.api
 
-import com.example.arcticapp.App
 import com.example.arcticapp.Extensions.Companion.serializeToMap
 import com.example.arcticapp.data.database.DictionaryStorage
+import com.example.arcticapp.data.database.LessonsStorage
 import com.example.arcticapp.data.models.*
 import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.google.firebase.database.DataSnapshot
@@ -13,21 +13,20 @@ import kotlinx.coroutines.tasks.await
 
 class API {
     companion object{
+        suspend fun getEducationItems(): DataSnapshot? {
+            return FirebaseDatabase.getInstance().getReference("lessons").get().await()
+        }
+
         fun getWordsList(filter: String): ArrayList<WordModel> {
-            return if (filter == "All"){
-                DictionaryStorage.getAllWords()
+            if (filter == "All"){
+                return DictionaryStorage.getAllWords()
             }else{
-                DictionaryStorage.getWordsByName(filter)
+                return DictionaryStorage.getWordsByName(filter)
             }
         }
 
-        fun getLessonTheory(lessonID: String): LessonTheory? =
-            LessonTheory(
-                "",
-                hashMapOf(),
-                "Скиньте 100 рублей",
-                arrayListOf()
-            )
+        fun getLessonTheory(lessonID: String): LessonTheory =
+            LessonsStorage.getLessonById(lessonID)!!
 
         suspend fun getWordInfo(originalWord: String): WordModel? =
             WordModel(
@@ -44,11 +43,7 @@ class API {
         fun getPracticeList(lessonID: String): ArrayList<PracticeTask> =
             TaskStorage.lessonTasks[lessonID]!!
 
-        suspend fun addTaskResult(result: TaskResult) {
-            App.resultsDatabase.savefileDao().upsert(result)
-        }
-
-        // TODO: Убрать все методы для получения тестовых заданий
+        // Этот метод не нужно исправлять, он тестовый
         fun getTask(lessonID: String): CompareTask =
             CompareTask(
                 arrayListOf(
