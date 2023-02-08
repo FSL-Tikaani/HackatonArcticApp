@@ -46,12 +46,12 @@ class VocabularyFragment : Fragment() {
             searchData(vocabularyViewModel)
         }
         //if user tup to enter btn on keyboard, we make search
-        binding!!.tvSearch.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
+        binding!!.tvSearch.setOnKeyListener { _, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
                 searchData(vocabularyViewModel)
             }
             false
-        })
+        }
 
         return binding!!.root
     }

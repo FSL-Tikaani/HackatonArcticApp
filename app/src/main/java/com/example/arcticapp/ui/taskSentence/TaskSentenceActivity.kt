@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arcticapp.ui.MainActivity
 import com.example.arcticapp.ui.adapters.SentenceBuilderAdapter
+import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.example.arcticapp.ui.congratulations.CongratulationsActivity
 import com.example.arcticapp.ui.dialogs.ExitDialogFragment
 import com.example.arcticapp.ui.dialogs.QuestionDialogFragment
@@ -55,15 +56,23 @@ class TaskSentenceActivity : AppCompatActivity() {
         }
         //exit to ???
         binding.cross.setOnClickListener {
-            val myExitDialog = ExitDialogFragment{
-                startActivity(Intent(this, MainActivity::class.java))
-            }
-            val manager = supportFragmentManager
-            myExitDialog.show(manager, "")
+            openExitDialog()
         }
 
         viewModel.loadTask("")
         setContentView(binding.root)
+    }
+
+    private fun openExitDialog() {
+        val myExitDialog = ExitDialogFragment{
+            super.onBackPressed()
+        }
+        val manager = supportFragmentManager
+        myExitDialog.show(manager, "")
+    }
+
+    override fun onBackPressed() {
+        openExitDialog()
     }
 
     private fun checkTest() {
@@ -84,6 +93,7 @@ class TaskSentenceActivity : AppCompatActivity() {
             .apply {
                 putExtra("score", score)
                 putExtra("maxscore", maxScore)
+                putExtra("type", TaskAdapter.TASK_SENTENCE)
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             })
     }

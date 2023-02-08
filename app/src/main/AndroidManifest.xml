@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="com.example.arcticapp.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -24,7 +25,8 @@
         </activity>
         <activity
             android:name="com.example.arcticapp.ui.taskTest.TaskTestActivity"
-            android:exported="true">
+            android:exported="true"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -32,6 +34,7 @@
         <activity
             android:name="com.example.arcticapp.ui.taskSentence.TaskSentenceActivity"
             android:exported="true"
+            android:noHistory="true"
             android:label="@string/title_activity_task_sentence"
             android:theme="@style/Theme.ArcticApp.NoActionBar">
             <meta-data
@@ -41,8 +44,9 @@
         <activity
             android:name="com.example.arcticapp.ui.taskСompare.TaskCompareActivity"
             android:exported="true"
+            android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:theme="@style/Theme.ArcticApp.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
