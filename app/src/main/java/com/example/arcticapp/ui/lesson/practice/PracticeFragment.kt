@@ -33,13 +33,13 @@ class PracticeFragment(
         viewModel = ViewModelProvider(this)[PracticeViewModel::class.java]
         adapter = TaskAdapter{ task ->
             val intent = Intent(requireContext(),
-            when(task.type) {
+            when(task.task.type) {
                 TaskAdapter.TASK_TEST -> TaskTestActivity::class.java
                 TaskAdapter.TASK_COMPARE -> TaskCompareActivity::class.java
                 TaskAdapter.TASK_SENTENCE -> TaskSentenceActivity::class.java
                 else -> {TaskTestActivity::class.java}
             })
-            startActivity(intent.apply{ putExtra("taskID", task.taskID) })
+            startActivity(intent.apply{ putExtra("taskID", task.task.taskID) })
         }
         binding.taskList.layoutManager = LinearLayoutManager(requireContext())
         binding.taskList.adapter = adapter

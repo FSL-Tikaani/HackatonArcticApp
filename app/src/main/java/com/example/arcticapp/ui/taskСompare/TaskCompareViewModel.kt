@@ -13,7 +13,7 @@ class TaskCompareViewModel: ViewModel() {
 
     fun loadTask(taskPath: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = API.getTask("")
+            val result = API.getCompareTask("")
             task.postValue(result)
         }
     }

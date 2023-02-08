@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.data.models.PracticeTask
+import com.example.arcticapp.data.models.TaskItem
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.TaskItemBinding
 import java.util.ArrayList
 
 class TaskAdapter(
-    private val onTaskClicked: (task: PracticeTask) -> Unit
+    private val onTaskClicked: (task: TaskItem) -> Unit
 ): RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     companion object {
         const val TASK_TEST = 0
@@ -19,17 +20,18 @@ class TaskAdapter(
         const val TASK_COMPARE = 2
     }
 
-    private var dataSet = emptyList<PracticeTask>()
+    private var dataSet = emptyList<TaskItem>()
 
     class ViewHolder(private val binding: TaskItemBinding):
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(
-            practiceTask: PracticeTask,
-            onTaskClicked: (task: PracticeTask) -> Unit
+            practiceTask: TaskItem,
+            onTaskClicked: (task: TaskItem) -> Unit
         ) {
-            binding.title.text = getTitleString(practiceTask.type)
+            binding.title.text = getTitleString(practiceTask.task.type)
             binding.taskIcon.setImageDrawable( ContextCompat.getDrawable(binding.root.context,
-                when(practiceTask.type) {
+                when(practiceTask.task.type) {
                     TASK_TEST -> R.drawable.ic_baseline_edit_note_24
                     TASK_SENTENCE -> R.drawable.ic_baseline_playlist_add_check_24
                     TASK_COMPARE -> R.drawable.translator_icon
@@ -37,6 +39,9 @@ class TaskAdapter(
                 }))
             binding.root.setOnClickListener {
                 onTaskClicked(practiceTask)
+            }
+            if (practiceTask.score > 0) {
+                binding.completeLabel.text = "Выполнено: ${practiceTask.score}/${practiceTask.maxScore}"
             }
         }
         private fun getTitleString(taskType: Int): String = when(taskType) {
@@ -65,7 +70,7 @@ class TaskAdapter(
     override fun getItemCount(): Int = dataSet.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setDataSet(tasks: ArrayList<PracticeTask>) {
+    fun setDataSet(tasks: ArrayList<TaskItem>) {
         dataSet = tasks
         notifyDataSetChanged()
     }

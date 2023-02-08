@@ -9,10 +9,10 @@ interface SavefileDao {
     fun getAllResults(): List<TaskResult>
 
     @Query("SELECT * FROM taskresult WHERE taskID = :taskID")
-    fun getTaskResultByTaskID(taskID: String): TaskResult
+    fun getTaskResultByTaskID(taskID: String): TaskResult?
 
     @Query("SELECT * FROM taskresult WHERE taskID LIKE :lessonID")
-    fun getTaskResultsByLessonID(lessonID: String): TaskResult
+    fun getTaskResultsByLessonID(lessonID: String): List<TaskResult>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(result: TaskResult): Long

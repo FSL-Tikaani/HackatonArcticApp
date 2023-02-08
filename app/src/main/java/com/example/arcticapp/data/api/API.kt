@@ -1,15 +1,11 @@
 package com.example.arcticapp.data.api
 
 import com.example.arcticapp.App
-import com.example.arcticapp.Extensions.Companion.serializeToMap
 import com.example.arcticapp.data.database.DictionaryStorage
 import com.example.arcticapp.data.database.LessonsStorage
 import com.example.arcticapp.data.models.*
-import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.tasks.await
 
 class API {
@@ -44,8 +40,11 @@ class API {
         fun getPracticeList(lessonID: String): ArrayList<PracticeTask> =
             TaskStorage.lessonTasks[lessonID]!!
 
+        fun getTaskByID(taskID: String): Any =
+            TaskStorage.tasks[taskID]!!
+
         // Этот метод не нужно исправлять, он тестовый
-        fun getTask(lessonID: String): CompareTask =
+        fun getCompareTask(lessonID: String): CompareTask =
             CompareTask(
                 arrayListOf(
                     CompareWord("Уу'' нил обу", "Как твое имя?"),
@@ -72,7 +71,7 @@ class API {
                 )
             )
 
-        fun getTestTask(taskID: String) =
+        fun getTestTask(taskID: String): TestTask =
             TestTask(
                 arrayListOf(
                     TestItem(
@@ -96,6 +95,9 @@ class API {
         suspend fun addTaskResult(taskResult: TaskResult) {
             App.resultsDatabase.savefileDao().upsert(taskResult)
         }
+
+        suspend fun getTaskResult(taskID: String): TaskResult? =
+            App.resultsDatabase.savefileDao().getTaskResultByTaskID(taskID)
 
         // TODO: нормальная работа с бд
 //            FirebaseFirestore.getInstance().collection("Words")
