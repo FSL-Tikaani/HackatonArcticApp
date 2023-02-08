@@ -1,5 +1,6 @@
 package com.example.arcticapp.data.api
 
+import com.example.arcticapp.App
 import com.example.arcticapp.Extensions.Companion.serializeToMap
 import com.example.arcticapp.data.database.DictionaryStorage
 import com.example.arcticapp.data.database.LessonsStorage
@@ -91,6 +92,10 @@ class API {
                     )
                 )
             )
+
+        suspend fun addTaskResult(taskResult: TaskResult) {
+            App.resultsDatabase.savefileDao().upsert(taskResult)
+        }
 
         // TODO: нормальная работа с бд
 //            FirebaseFirestore.getInstance().collection("Words")
