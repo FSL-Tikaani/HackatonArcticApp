@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.arcticapp.ui.MainActivity
 import com.example.arcticapp.ui.adapters.DragListener
+import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.example.arcticapp.ui.adapters.WordCompareAdapter
 import com.example.arcticapp.ui.adapters.WordDraggableAdapter
+import com.example.arcticapp.ui.congratulations.CongratulationsActivity
 import com.example.arcticapp.ui.dialogs.ExitDialogFragment
 import com.example.arcticapp.ui.dialogs.QuestionDialogFragment
 import com.example.arcticappfinal.R
@@ -37,12 +39,14 @@ class TaskCompareActivity : AppCompatActivity() {
                 val holder = binding.compareList.findViewHolderForAdapterPosition(position)
                     as WordCompareAdapter.ViewHolder
                 holder.setTranslationLabel("Перевод: $word")
+                holder.animateCorrectly()
                 onWordComparingDone()
             },
             { position ->
                 val holder = binding.compareList.findViewHolderForAdapterPosition(position)
                         as WordCompareAdapter.ViewHolder
                 holder.setTranslationLabel("Неверный перевод!")
+                holder.animateWrongly()
                 score = max(score - 1, 0)
             }
         )
@@ -69,19 +73,38 @@ class TaskCompareActivity : AppCompatActivity() {
         }
         //exit to ???
         binding.cross.setOnClickListener {
-            val myExitDialog = ExitDialogFragment{
-                startActivity(Intent(this, MainActivity::class.java))
-            }
-            val manager = supportFragmentManager
-            myExitDialog.show(manager, "")
+            openExitDialog()
         }
+    }
+
+    private fun openExitDialog() {
+        val myExitDialog = ExitDialogFragment{
+            super.onBackPressed()
+        }
+        val manager = supportFragmentManager
+        myExitDialog.show(manager, "")
+    }
+
+    override fun onBackPressed() {
+        openExitDialog()
     }
 
     private fun onWordComparingDone() {
         if (isDone()) {
-
+            finishTask(score)
         }
     }
 
-    private fun isDone(): Boolean = wordsAdapter.itemCount == 0
+    private fun finishTask(score: Int) {
+        val maxScore = wordsCompareAdapter.itemCount
+        startActivity(Intent(this, CongratulationsActivity::class.java)
+            .apply {
+                putExtra("score", score)
+                putExtra("maxscore", maxScore)
+                putExtra("type", TaskAdapter.TASK_SENTENCE)
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            })
+    }
+
+    private fun isDone(): Boolean = wordsAdapter.itemCount == 1
 }

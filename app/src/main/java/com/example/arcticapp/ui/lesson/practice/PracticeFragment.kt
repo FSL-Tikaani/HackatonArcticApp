@@ -39,7 +39,7 @@ class PracticeFragment(
                 TaskAdapter.TASK_SENTENCE -> TaskSentenceActivity::class.java
                 else -> {TaskTestActivity::class.java}
             })
-            startActivity(intent)
+            startActivity(intent.apply{ putExtra("taskID", task.taskID) })
         }
         binding.taskList.layoutManager = LinearLayoutManager(requireContext())
         binding.taskList.adapter = adapter

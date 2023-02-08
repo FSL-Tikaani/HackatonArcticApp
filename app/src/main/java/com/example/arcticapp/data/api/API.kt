@@ -1,5 +1,6 @@
 package com.example.arcticapp.data.api
 
+import com.example.arcticapp.App
 import com.example.arcticapp.Extensions.Companion.serializeToMap
 import com.example.arcticapp.data.database.DictionaryStorage
 import com.example.arcticapp.data.models.*
@@ -12,19 +13,15 @@ import kotlinx.coroutines.tasks.await
 
 class API {
     companion object{
-        suspend fun getEducationItems(): DataSnapshot? {
-            return FirebaseDatabase.getInstance().getReference("lessons").get().await()
-        }
-
         fun getWordsList(filter: String): ArrayList<WordModel> {
-            if (filter == "All"){
-                return DictionaryStorage.getAllWords()
+            return if (filter == "All"){
+                DictionaryStorage.getAllWords()
             }else{
-                return DictionaryStorage.getWordsByName(filter)
+                DictionaryStorage.getWordsByName(filter)
             }
         }
 
-        suspend fun getLessonTheory(lessonID: String): LessonTheory? =
+        fun getLessonTheory(lessonID: String): LessonTheory? =
             LessonTheory(
                 "",
                 hashMapOf(),
@@ -47,7 +44,11 @@ class API {
         fun getPracticeList(lessonID: String): ArrayList<PracticeTask> =
             TaskStorage.lessonTasks[lessonID]!!
 
-        // Этот метод не нужно исправлять, он тестовый
+        suspend fun addTaskResult(result: TaskResult) {
+            App.resultsDatabase.savefileDao().upsert(result)
+        }
+
+        // TODO: Убрать все методы для получения тестовых заданий
         fun getTask(lessonID: String): CompareTask =
             CompareTask(
                 arrayListOf(

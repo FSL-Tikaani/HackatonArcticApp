@@ -3,6 +3,7 @@ package com.example.arcticapp.ui.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.data.models.PracticeTask
 import com.example.arcticappfinal.R
@@ -27,6 +28,13 @@ class TaskAdapter(
             onTaskClicked: (task: PracticeTask) -> Unit
         ) {
             binding.title.text = getTitleString(practiceTask.type)
+            binding.taskIcon.setImageDrawable( ContextCompat.getDrawable(binding.root.context,
+                when(practiceTask.type) {
+                    TASK_TEST -> R.drawable.ic_baseline_edit_note_24
+                    TASK_SENTENCE -> R.drawable.ic_baseline_playlist_add_check_24
+                    TASK_COMPARE -> R.drawable.translator_icon
+                    else -> R.drawable.ic_baseline_menu_book_24
+                }))
             binding.root.setOnClickListener {
                 onTaskClicked(practiceTask)
             }
@@ -36,6 +44,10 @@ class TaskAdapter(
             TASK_SENTENCE -> itemView.context.getString(R.string.sentences)
             TASK_COMPARE -> itemView.context.getString(R.string.comparing)
             else -> ""
+        }
+
+        fun checkTask(): Boolean {
+            return true
         }
     }
 

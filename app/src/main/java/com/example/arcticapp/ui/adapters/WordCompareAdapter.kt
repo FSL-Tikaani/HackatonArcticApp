@@ -1,11 +1,15 @@
 package com.example.arcticapp.ui.adapters
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.TransitionDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.data.models.CompareWord
+import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.WordCompareItemBinding
+
 
 class WordCompareAdapter(
     private val onWordInserted: (word:String, position: Int) -> Unit,
@@ -23,6 +27,22 @@ class WordCompareAdapter(
 
         fun setTranslationLabel(text: String) {
             binding.translation.text = text
+        }
+
+        fun animateWrongly() {
+            binding.originalWord.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
+            binding.translation.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
+            binding.root.background = ContextCompat.getDrawable(binding.root.context, R.drawable.transition_wrong)
+            val transitionDrawable = binding.root.background as TransitionDrawable
+            transitionDrawable.startTransition(300)
+        }
+
+        fun animateCorrectly() {
+            binding.originalWord.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
+            binding.translation.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
+            binding.root.background = ContextCompat.getDrawable(binding.root.context, R.drawable.transition_correct)
+            val transitionDrawable = binding.root.background as TransitionDrawable
+            transitionDrawable.startTransition(300)
         }
     }
 
