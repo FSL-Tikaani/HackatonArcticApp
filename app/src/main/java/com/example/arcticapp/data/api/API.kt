@@ -2,6 +2,7 @@ package com.example.arcticapp.data.api
 
 import com.example.arcticapp.Extensions.Companion.serializeToMap
 import com.example.arcticapp.data.database.DictionaryStorage
+import com.example.arcticapp.data.database.LessonsStorage
 import com.example.arcticapp.data.models.*
 import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.google.firebase.database.DataSnapshot
@@ -24,13 +25,8 @@ class API {
             }
         }
 
-        suspend fun getLessonTheory(lessonID: String): LessonTheory? =
-            LessonTheory(
-                "",
-                hashMapOf(),
-                "Скиньте 100 рублей",
-                arrayListOf()
-            )
+        fun getLessonTheory(lessonID: String): LessonTheory =
+            LessonsStorage.getLessonById(lessonID)!!
 
         suspend fun getWordInfo(originalWord: String): WordModel? =
             WordModel(

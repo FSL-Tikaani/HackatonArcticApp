@@ -3,8 +3,7 @@ package com.example.arcticapp.ui.lesson
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.arcticappfinal.R
@@ -19,10 +18,13 @@ class LessonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLessonBinding.inflate(layoutInflater)
 
-        val idItem = intent.getStringExtra("idEducationItem")!!
+        val idLesson = intent.getStringExtra("idEducationItem")!!
 
-        adapter = LessonTabAdapter(this, idItem)
+        Log.d("idItemLessonActivity", idLesson)
+
+        adapter = LessonTabAdapter(this, idLesson)
         binding.pager.adapter = adapter
+
         binding.buttonTab1.setOnClickListener {
             onTabClicked(0)
         }
@@ -34,6 +36,7 @@ class LessonActivity : AppCompatActivity() {
                 onTabClicked(position, false)
             }
         })
+
         textColor = binding.tabText1.textColors
         setContentView(binding.root)
         onTabClicked(0)
