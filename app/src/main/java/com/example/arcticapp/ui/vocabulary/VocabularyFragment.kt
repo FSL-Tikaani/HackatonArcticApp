@@ -52,7 +52,7 @@ class VocabularyFragment : Fragment() {
             binding!!.tvSearch.append("ң")
         }
         binding!!.letterApostroph.setOnClickListener {
-            binding!!.tvSearch.append("'")
+            binding!!.tvSearch.append("ô")
         }
         binding!!.letterDoubleApostroph.setOnClickListener {
             binding!!.tvSearch.append("”")

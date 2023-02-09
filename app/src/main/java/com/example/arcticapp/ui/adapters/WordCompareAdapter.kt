@@ -54,6 +54,7 @@ class WordCompareAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataSet[position]
+        item.done = false
         holder.bind(item, position+1)
         holder.itemView.tag = position
         holder.itemView.setOnDragListener(DragListener())

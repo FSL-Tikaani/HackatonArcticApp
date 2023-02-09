@@ -35,57 +35,18 @@ class API {
         fun getPracticeList(lessonID: String): ArrayList<PracticeTask> =
             TaskStorage.lessonTasks[lessonID]!!
 
-        fun getTaskByID(taskID: String): Any =
+        private fun getTaskByID(taskID: String): Any =
             TaskStorage.tasks[taskID]!!
 
         // Этот метод не нужно исправлять, он тестовый
-        fun getCompareTask(lessonID: String): CompareTask =
-            CompareTask(
-                arrayListOf(
-                    CompareWord("Уу'' нил обу", "Как твое имя?"),
-                    CompareWord("Модь ним", "Меня зовут"),
-                    CompareWord("Дорова най''", "Здравствуйте"),
-                    CompareWord("Локичу най", "До свидания")
-                ),
-                arrayListOf("Как твое имя?", "Меня зовут", "Здравствуйте", "До свидания")
-            )
+        fun getCompareTask(taskID: String): CompareTask =
+            getTaskByID(taskID) as CompareTask
 
-        fun getSentenceTask(lessonID: String): SentenceTask =
-            SentenceTask(
-                arrayListOf(
-                    SentenceItem(
-                        "Здесь будет предложение на русском",
-                        "2 1 3 4",
-                        arrayListOf("1", "2", "3", "4")
-                    ),
-                    SentenceItem(
-                        "Здесь будет предложение на русском",
-                        "Правильное предложение",
-                        arrayListOf("слово1", "слово2", "слово3", "слово4")
-                    ),
-                )
-            )
+        fun getSentenceTask(taskID: String): SentenceTask =
+            getTaskByID(taskID) as SentenceTask
 
         fun getTestTask(taskID: String): TestTask =
-            TestTask(
-                arrayListOf(
-                    TestItem(
-                        "Как какать?",
-                        arrayListOf("Никак", "Легко", "Сложно"),
-                        0
-                    ),
-                    TestItem(
-                        "Как какать?",
-                        arrayListOf("Никак", "Легко", "Сложно"),
-                        0
-                    ),
-                    TestItem(
-                        "Как какать?",
-                        arrayListOf("Никак", "Легко", "Сложно"),
-                        0
-                    )
-                )
-            )
+            getTaskByID(taskID) as TestTask
 
         suspend fun uploadTaskResult(taskResult: TaskResult) {
             val previousResult = getTaskResult(taskResult.taskID)

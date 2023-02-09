@@ -121,7 +121,7 @@
             android:gravity="center"
             android:clickable="true"
             android:focusable="true"
-            android:text="'"
+            android:text="ô"
             android:textSize="24sp"
             android:textStyle="bold" />
     </FrameLayout>

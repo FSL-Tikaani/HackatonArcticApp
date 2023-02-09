@@ -10,7 +10,7 @@ class Translator {
         fun translateString(originalString: String, mode: Int): String =
             when (mode) {
                 TRANSLATION_MODE_RUS_TO_ENECH -> translateToEnech(originalString)
-                TRANSLATION_MODE_ENECH_TO_RUS -> translateToEnech(originalString)
+                TRANSLATION_MODE_ENECH_TO_RUS -> translateToRus(originalString)
                 else -> {originalString}
             }
 
@@ -19,8 +19,21 @@ class Translator {
             API.getWordsList("All").forEach { word ->
                 if (result.lowercase().contains(word.translation.lowercase().replace("?", "").replace("...", "").replace("!", ""))) {
                     result = result.replace(
-                        word.translation.lowercase().replace("?", "").replace("...", "").replace("!", ""),
+                        word.translation.lowercase().replace("?", "").replace("...", "").replace("!", "").trim(),
                         word.originalWord.lowercase().replace("?", "").replace("...", "").replace("!", "")
+                    )
+                }
+            }
+            return result
+        }
+
+        private fun translateToRus(originalString: String): String {
+            var result = originalString
+            API.getWordsList("All").forEach { word ->
+                if (result.lowercase().contains(word.originalWord.lowercase().replace("?", "").replace("...", "").replace("!", ""))) {
+                    result = result.replace(
+                        word.originalWord.lowercase().replace("?", "").replace("...", "").replace("!", "").trim(),
+                        word.translation.lowercase().replace("?", "").replace("...", "").replace("!", "")
                     )
                 }
             }

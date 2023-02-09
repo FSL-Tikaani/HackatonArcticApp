@@ -21,11 +21,13 @@ class SmallLetterAdapter(private val clickedItem: (item: LetterModel) -> Unit):
 
     class ViewHolder(private val binding: AbcSmallItemBinding, private val clickedItem: (model: LetterModel) -> Unit):
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(letterModel: LetterModel, index: Int) {
-            binding.tvLetter.text = letterModel.nameLetter
-            binding.tvLetter.setTextColor(Color.parseColor(letterModel.color))
+            binding.tvLetter.text = letterModel.letter
             binding.root.setOnClickListener { clickedItem(letterModel) }
-            binding.tvIndex.text = (index + 1).toString()
+            var letterIndex = (index + 1).toString()
+            if (letterIndex.length == 1) letterIndex = "0$letterIndex"
+            binding.tvIndex.text = letterIndex
         }
     }
 

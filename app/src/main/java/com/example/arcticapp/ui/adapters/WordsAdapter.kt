@@ -30,8 +30,8 @@ class WordsAdapter: RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
         private lateinit var tts: TextToSpeech
 
         fun bind(word: WordModel) {
-            binding.original.text = word.originalWord
-            binding.translation.text = word.translation
+            binding.original.text = word.originalWord.trim()
+            binding.translation.text = word.translation.trim()
             tts = TextToSpeech(binding.root.context) {
                 tts.language = Locale("ru")
             }

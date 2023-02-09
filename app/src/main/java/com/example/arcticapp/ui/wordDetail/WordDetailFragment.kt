@@ -47,8 +47,8 @@ class WordDetailFragment(
     }
 
     private fun displayWordData(wordModel: WordModel) {
-        binding.original.text = wordModel.originalWord
-        binding.translation.text = wordModel.translation
+        binding.original.text = wordModel.originalWord.trim()
+        binding.translation.text = wordModel.translation.trim()
     }
 
     private fun fadeIn() {

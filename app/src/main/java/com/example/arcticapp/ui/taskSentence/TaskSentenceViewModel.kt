@@ -12,9 +12,9 @@ class TaskSentenceViewModel: ViewModel() {
     val task: MutableLiveData<SentenceTask> = MutableLiveData()
     val score: MutableLiveData<Int> = MutableLiveData(0)
 
-    fun loadTask(lessonID: String) {
+    fun loadTask(taskID: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = API.getSentenceTask("")
+            val result = API.getSentenceTask(taskID)
             task.postValue(result)
         }
     }

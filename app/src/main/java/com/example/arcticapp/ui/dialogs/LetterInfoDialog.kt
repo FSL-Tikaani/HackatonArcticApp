@@ -2,12 +2,11 @@ package com.example.arcticapp.ui.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.os.Binder
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.arcticapp.data.models.LetterModel
 import com.example.arcticappfinal.R
@@ -19,17 +18,22 @@ class LetterInfoDialog(private var letterModel: LetterModel) : AppCompatDialogFr
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = CustomDialogLetterInfoBinding.inflate(LayoutInflater.from(context))
+        binding.letter.text = letterModel.letter
+        binding.wordOriginal.text = letterModel.word.originalWord
+        binding.translation.text = letterModel.word.translation
 
-        binding.tvInfoLetter.text = letterModel.nameLetter
         Glide
             .with(binding.root)
             .load(R.drawable.education_item_img)
-            .into(binding.imgLetter)
-        binding.btnClose.setOnClickListener {
-            dismiss()
-        }
+            .into(binding.letterIllustration)
+
         return AlertDialog.Builder(this.context)
             .setView(binding.root)
             .create()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 }

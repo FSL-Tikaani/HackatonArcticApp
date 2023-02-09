@@ -60,7 +60,7 @@ class TaskSentenceActivity : AppCompatActivity() {
             openExitDialog()
         }
 
-        viewModel.loadTask("")
+        viewModel.loadTask(taskID)
         setContentView(binding.root)
     }
 

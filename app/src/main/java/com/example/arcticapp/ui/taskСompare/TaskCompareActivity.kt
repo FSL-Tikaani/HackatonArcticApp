@@ -62,7 +62,7 @@ class TaskCompareActivity : AppCompatActivity() {
             wordsCompareAdapter.setDataset(task.enechWords)
         }
 
-        viewModel.loadTask("")
+        viewModel.loadTask(taskID)
         setContentView(binding.root)
 
         //on Click
