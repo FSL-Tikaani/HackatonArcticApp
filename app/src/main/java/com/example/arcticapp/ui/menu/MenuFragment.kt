@@ -31,7 +31,7 @@ class MenuFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.navigation_translator)
         }
         binding.abcBlock.setOnClickListener {
-            // TODO: abc navigation
+            Navigation.findNavController(it).navigate(R.id.navigation_abc)
         }
         return binding.root
     }

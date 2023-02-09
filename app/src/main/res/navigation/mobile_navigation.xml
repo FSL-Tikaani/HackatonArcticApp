@@ -28,4 +28,10 @@
         android:name="com.example.arcticapp.ui.translator.TranslatorFragment"
         android:label="@string/title_translator"
         tools:layout="@layout/fragment_translator" />
+
+    <fragment
+        android:id="@+id/navigation_abc"
+        android:name="com.example.arcticapp.ui.ABCbook.ABCbookFragment"
+        android:label="@string/title_translator"
+        tools:layout="@layout/fragment_translator" />
 </navigation>

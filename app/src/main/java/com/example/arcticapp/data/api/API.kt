@@ -2,6 +2,7 @@ package com.example.arcticapp.data.api
 
 import com.example.arcticapp.App
 import com.example.arcticapp.data.database.DictionaryStorage
+import com.example.arcticapp.data.database.LetterStorage
 import com.example.arcticapp.data.models.*
 import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.example.arcticappfinal.R
@@ -11,9 +12,8 @@ import kotlinx.coroutines.tasks.await
 
 class API {
     companion object{
-        suspend fun getEducationItems(): DataSnapshot? {
-            return FirebaseDatabase.getInstance().getReference("lessons").get().await()
-        }
+
+        fun getLetters() = LetterStorage.letters
 
         fun getWordsList(filter: String): ArrayList<WordModel> {
             if (filter == "All"){

@@ -18,7 +18,7 @@ class EducationAdapter(private val clickedItem: (item: EducationItemModel) -> Un
           notifyDataSetChanged()
      }
 
-     class ViewHolder(private val binding: EducationItemBinding, private val clickedItem: (model: EducationItemModel) -> Unit):
+          class ViewHolder(private val binding: EducationItemBinding, private val clickedItem: (model: EducationItemModel) -> Unit):
           RecyclerView.ViewHolder(binding.root) {
           fun bind(educationItem: EducationItemModel) {
                binding.tvItemEducation.text = educationItem.name
