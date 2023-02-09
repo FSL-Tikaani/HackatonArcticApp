@@ -12,25 +12,13 @@
         android:layout_height="wrap_content"
         tools:context="com.example.arcticapp.ui.lesson.theory.TheoryFragment">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="Видеоурок"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.exoplayer2.ui.StyledPlayerView
             android:id="@+id/video_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="268dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ProgressBar
                 android:id="@+id/progressBar"

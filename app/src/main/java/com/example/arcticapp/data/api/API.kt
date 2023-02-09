@@ -5,10 +5,6 @@ import com.example.arcticapp.data.database.DictionaryStorage
 import com.example.arcticapp.data.database.LetterStorage
 import com.example.arcticapp.data.models.*
 import com.example.arcticapp.ui.adapters.TaskAdapter
-import com.example.arcticappfinal.R
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.FirebaseDatabase
-import kotlinx.coroutines.tasks.await
 
 class API {
     companion object{
@@ -31,8 +27,6 @@ class API {
                 "мэнду",
                 "привет",
                 "",
-                "слово приветствия",
-                ""
             )
 
         fun getLessonList(): ArrayList<EducationItemModel> =

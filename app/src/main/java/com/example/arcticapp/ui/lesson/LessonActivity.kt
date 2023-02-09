@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.arcticappfinal.R
@@ -12,18 +13,18 @@ import com.example.arcticappfinal.databinding.ActivityLessonBinding
 
 class LessonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLessonBinding
+    private lateinit var viewModel: LessonViewModel
     private lateinit var adapter: LessonTabAdapter
     private lateinit var textColor: ColorStateList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[LessonViewModel::class.java]
         binding = ActivityLessonBinding.inflate(layoutInflater)
         binding.cross.setOnClickListener { view ->
-            Navigation.findNavController(view).popBackStack()
+            onBackPressed()
         }
         val idLesson = intent.getStringExtra("idEducationItem")!!
-
-        Log.d("idItemLessonActivity", idLesson)
 
         adapter = LessonTabAdapter(this, idLesson)
         binding.pager.adapter = adapter
@@ -39,6 +40,10 @@ class LessonActivity : AppCompatActivity() {
                 onTabClicked(position, false)
             }
         })
+        viewModel.lessonInfo.observe(this) { lessonInfo ->
+            binding.headingText.text = lessonInfo.name
+        }
+        viewModel.loadLessonInfo(idLesson)
 
         textColor = binding.tabText1.textColors
         setContentView(binding.root)

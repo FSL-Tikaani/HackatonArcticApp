@@ -27,16 +27,16 @@ class WordsAdapter: RecyclerView.Adapter<WordsAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: WordItemBinding)
         : RecyclerView.ViewHolder(binding.root) {
-        //private lateinit var tts: TextToSpeech
+        private lateinit var tts: TextToSpeech
 
         fun bind(word: WordModel) {
             binding.original.text = word.originalWord
             binding.translation.text = word.translation
-            /*tts = TextToSpeech(binding.root.context) {
+            tts = TextToSpeech(binding.root.context) {
                 tts.language = Locale("ru")
-            }*/
+            }
             binding.listenButton.setOnClickListener {
-                //tts.speak(word.originalWord, TextToSpeech.QUEUE_FLUSH, null, "")
+                tts.speak(word.transcription, TextToSpeech.QUEUE_FLUSH, null, "")
             }
         }
     }

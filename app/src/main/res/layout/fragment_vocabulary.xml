@@ -70,7 +70,7 @@
             android:layout_gravity="center"
             android:clickable="true"
             android:focusable="true"
-            android:text="н"
+            android:text="ң"
             android:textSize="24sp"
             android:textStyle="bold" />
     </FrameLayout>
@@ -96,7 +96,7 @@
             android:layout_gravity="center"
             android:clickable="true"
             android:focusable="true"
-            android:text="e"
+            android:text="ԑ"
             android:textSize="24sp"
             android:textStyle="bold" />
     </FrameLayout>
