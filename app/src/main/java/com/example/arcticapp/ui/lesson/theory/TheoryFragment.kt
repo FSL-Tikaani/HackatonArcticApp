@@ -42,7 +42,6 @@ class TheoryFragment(
 
         viewModel.theory.observe(viewLifecycleOwner) { theory ->
             lessonModel = theory
-            binding.textView.text = theory.name
             binding.tvDescription.text = theory.description
         }
 

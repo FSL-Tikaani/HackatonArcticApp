@@ -45,6 +45,18 @@ class VocabularyFragment : Fragment() {
         binding!!.cross.setOnClickListener { view ->
             Navigation.findNavController(view).popBackStack()
         }
+        binding!!.letterE.setOnClickListener {
+            binding!!.tvSearch.append("ԑ")
+        }
+        binding!!.letterN.setOnClickListener {
+            binding!!.tvSearch.append("ң")
+        }
+        binding!!.letterApostroph.setOnClickListener {
+            binding!!.tvSearch.append("'")
+        }
+        binding!!.letterDoubleApostroph.setOnClickListener {
+            binding!!.tvSearch.append("”")
+        }
         //if user tup to enter btn on keyboard, we make search
         binding!!.tvSearch.setOnKeyListener { _, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
