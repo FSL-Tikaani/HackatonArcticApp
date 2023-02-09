@@ -42,12 +42,10 @@ class EducationFragment : Fragment() {
         recyclerView = binding!!.recyclerViewEducation
         recyclerView.layoutManager = GridLayoutManager(binding!!.root.context, 2)
         adapter = EducationAdapter { item ->
-
             EducationCustomBottomList(item){
                 val intent = Intent(context, LessonActivity::class.java)
                 intent.putExtra("idEducationItem", item.id)
                 startActivity(intent)
-
             }.show(childFragmentManager, "tag")
         }
 

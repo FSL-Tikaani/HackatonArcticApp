@@ -98,9 +98,5 @@ class API {
 
         suspend fun getTaskResult(taskID: String): TaskResult? =
             App.resultsDatabase.savefileDao().getTaskResultByTaskID(taskID)
-
-        // TODO: нормальная работа с бд
-//            FirebaseFirestore.getInstance().collection("Words")
-//                .document(originalWord).get().await()
     }
 }
