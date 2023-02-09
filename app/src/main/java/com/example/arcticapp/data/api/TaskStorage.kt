@@ -11,6 +11,7 @@ class TaskStorage {
                 "Урок 1 первые шаги",
                 "В этом уроке вы познакомитесь с энецким, имена фамилии узнаете, еще счиатть научитесь и тд",
                 R.drawable.education_item_img,
+                R.raw.video1,
                 "lesson1",
                 3
             ),
@@ -18,6 +19,7 @@ class TaskStorage {
                 "Урок 1 первые шаги",
                 "В этом уроке вы познакомитесь с энецким, имена фамилии узнаете, еще счиатть научитесь и тд",
                 R.drawable.education_item_img,
+                R.raw.video1,
                 "lesson2",
                 3
             ),
@@ -25,6 +27,7 @@ class TaskStorage {
                 "Урок 1 первые шаги",
                 "В этом уроке вы познакомитесь с энецким, имена фамилии узнаете, еще счиатть научитесь и тд",
                 R.drawable.education_item_img,
+                R.raw.video1,
                 "lesson3",
                 3
             )

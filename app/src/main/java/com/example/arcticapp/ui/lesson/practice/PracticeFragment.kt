@@ -46,7 +46,11 @@ class PracticeFragment(
         viewModel.practiceList.observe(viewLifecycleOwner) { tasks ->
             adapter.setDataSet(tasks)
         }
-        viewModel.loadPracticeList(lessonID)
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadPracticeList(lessonID)
     }
 }

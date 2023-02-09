@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.data.models.WordModel
@@ -41,9 +42,8 @@ class VocabularyFragment : Fragment() {
         updateDataRecycler(vocabularyViewModel.liveDataListVocabulary)
 
         recyclerView.adapter = adapter
-
-        binding!!.btnSearch.setOnClickListener {
-            searchData(vocabularyViewModel)
+        binding!!.cross.setOnClickListener { view ->
+            Navigation.findNavController(view).popBackStack()
         }
         //if user tup to enter btn on keyboard, we make search
         binding!!.tvSearch.setOnKeyListener { _, keyCode, event ->

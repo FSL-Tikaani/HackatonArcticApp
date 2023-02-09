@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -23,21 +24,32 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="16dp"
         android:text="Название урока"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_bottom_list_education_progress"
+        app:layout_constraintBottom_toTopOf="@+id/scoreProgress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_bottom_list_education_img_lesson" />
 
     <TextView
-        android:id="@+id/tv_bottom_list_education_progress"
+        android:id="@+id/scoreProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Пройдено: 5/10"
+        android:text="Получено очков: 0/1"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:textColor="@color/purple_500"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/taskProgress"
+        app:layout_constraintStart_toStartOf="@+id/tv_bottom_list_education_name_lesson" />
+
+    <TextView
+        android:id="@+id/taskProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Заданий выполнено: 0/1"
+        android:textSize="16sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/img_bottom_list_education_img_lesson"
         app:layout_constraintStart_toStartOf="@+id/tv_bottom_list_education_name_lesson" />
@@ -61,7 +73,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/purple_500"
-        android:text="Начать прохождение"
+        android:text="Начать урок"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_bottom_list_education_description"
         app:layout_constraintTop_toBottomOf="@+id/tv_bottom_list_education_description" />

@@ -21,12 +21,13 @@ class TaskSentenceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTaskSentenceBinding
     private lateinit var adapter: SentenceBuilderAdapter
     private lateinit var viewModel: TaskSentenceViewModel
+    private var taskID: String = ""
     private var checked = false
     private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        taskID = intent.getStringExtra("taskID")!!
         binding = ActivityTaskSentenceBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this)[TaskSentenceViewModel::class.java]
         adapter = SentenceBuilderAdapter { word ->
@@ -94,6 +95,7 @@ class TaskSentenceActivity : AppCompatActivity() {
                 putExtra("score", score)
                 putExtra("maxscore", maxScore)
                 putExtra("type", TaskAdapter.TASK_SENTENCE)
+                putExtra("taskID", taskID)
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             })
     }

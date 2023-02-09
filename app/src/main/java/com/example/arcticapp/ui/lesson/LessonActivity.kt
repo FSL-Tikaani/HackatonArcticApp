@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.ActivityLessonBinding
@@ -17,7 +18,9 @@ class LessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLessonBinding.inflate(layoutInflater)
-
+        binding.cross.setOnClickListener { view ->
+            Navigation.findNavController(view).popBackStack()
+        }
         val idLesson = intent.getStringExtra("idEducationItem")!!
 
         Log.d("idItemLessonActivity", idLesson)

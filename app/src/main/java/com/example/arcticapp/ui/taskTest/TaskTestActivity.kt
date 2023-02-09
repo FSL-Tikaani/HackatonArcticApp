@@ -17,12 +17,13 @@ class TaskTestActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTaskTestBinding
     private lateinit var viewModel: TaskTestViewModel
     private lateinit var adapter: TestAdapter
-    private var taskID: Int = 0
+    private var taskID: String = ""
     private var checked = false
     private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        taskID = intent.getStringExtra("taskID")!!
         binding = ActivityTaskTestBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this)[TaskTestViewModel::class.java]
         adapter = TestAdapter()
@@ -62,7 +63,7 @@ class TaskTestActivity : AppCompatActivity() {
                 putExtra("score", score)
                 putExtra("maxscore", maxScore)
                 putExtra("type", TaskAdapter.TASK_TEST)
-                putExtra("taskID", "lesson1_1")
+                putExtra("taskID", taskID)
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             })
     }

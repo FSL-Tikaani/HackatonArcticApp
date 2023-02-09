@@ -11,7 +11,7 @@ class CongratulationsViewModel: ViewModel() {
 
     fun addTaskResultToDatabase(taskResult: TaskResult) {
         viewModelScope.launch(Dispatchers.IO) {
-            API.addTaskResult(taskResult)
+            API.uploadTaskResult(taskResult)
         }
     }
 }

@@ -10,10 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.arcticapp.data.models.EducationItemModel
 import com.example.arcticapp.data.models.LessonTheory
-import com.example.arcticapp.ui.adapters.WordsAdapter
 import com.example.arcticappfinal.databinding.FragmentTheoryBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -26,15 +24,12 @@ class TheoryFragment(
 ) : Fragment() {
     private lateinit var binding: FragmentTheoryBinding
     private lateinit var viewModel: TheoryViewModel
-    private var lessonModel: LessonTheory = LessonTheory()
+    private var lessonModel: EducationItemModel = EducationItemModel()
     //videoPlayer
     private lateinit var player: ExoPlayer
     private lateinit var playerView: StyledPlayerView
     private lateinit var progressBar: ProgressBar
     private var lastTimePlayer: Long = 0
-    //recycler view
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: WordsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,20 +40,12 @@ class TheoryFragment(
 
         viewModel.loadTheory(lessonID)
 
-        //init recycler view
-        recyclerView = binding.recyclerViewSmallVocabulary
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = WordsAdapter()
-
         viewModel.theory.observe(viewLifecycleOwner) { theory ->
             lessonModel = theory
-            binding.textView.text = theory.nameLesson
-            binding.tvDescription.text = theory.descriptionLesson
-
-            adapter.setDataList(theory.arrWordsInVideo)
+            binding.textView.text = theory.name
+            binding.tvDescription.text = theory.description
         }
 
-        recyclerView.adapter = adapter
         //init videoPlayer
         progressBar = binding.progressBar
         setupPlayer()

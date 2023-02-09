@@ -25,10 +25,12 @@ class TaskCompareActivity : AppCompatActivity() {
     private lateinit var viewModel: TaskCompareViewModel
     private lateinit var wordsAdapter: WordDraggableAdapter
     private lateinit var wordsCompareAdapter: WordCompareAdapter
+    private var taskID: String = ""
     private var score = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        taskID = intent.getStringExtra("taskID")!!
         binding = ActivityTaskCompareBinding.inflate(layoutInflater)
         wordsAdapter = WordDraggableAdapter()
         binding.wordsList.layoutManager = GridLayoutManager(this, 2)
@@ -101,7 +103,8 @@ class TaskCompareActivity : AppCompatActivity() {
             .apply {
                 putExtra("score", score)
                 putExtra("maxscore", maxScore)
-                putExtra("type", TaskAdapter.TASK_SENTENCE)
+                putExtra("type", TaskAdapter.TASK_COMPARE)
+                putExtra("taskID", taskID)
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             })
     }

@@ -6,18 +6,45 @@
     android:layout_height="match_parent"
     tools:context="com.example.arcticapp.ui.lesson.LessonActivity">
 
+    <ImageView
+        android:id="@+id/cross"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="16dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_cross"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_education"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/cross"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/buttonTab1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:clickable="true"
         android:background="@drawable/tab_background"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headingText"
         android:focusable="true">
 
         <TextView
@@ -35,13 +62,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:clickable="true"
         android:background="@drawable/tab_background"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headingText"
         android:focusable="true">
 
         <TextView
