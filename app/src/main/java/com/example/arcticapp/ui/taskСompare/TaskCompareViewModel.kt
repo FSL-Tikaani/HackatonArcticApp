@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 class TaskCompareViewModel: ViewModel() {
     val task: MutableLiveData<CompareTask> = MutableLiveData()
 
-    fun loadTask(taskPath: String) {
+    fun loadTask(taskID: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = API.getCompareTask("")
+            val result = API.getCompareTask(taskID)
             task.postValue(result)
         }
     }

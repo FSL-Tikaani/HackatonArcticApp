@@ -2,6 +2,8 @@ package com.example.arcticapp.ui.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -29,6 +31,11 @@ class QuestionDialogFragment(val textAnswer: Int) : AppCompatDialogFragment(){
         return AlertDialog.Builder(this.context)
             .setView(customView)
             .create()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
 }

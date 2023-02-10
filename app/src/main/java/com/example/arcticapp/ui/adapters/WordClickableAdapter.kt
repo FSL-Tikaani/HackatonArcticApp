@@ -7,18 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.arcticapp.data.models.SentenceWord
 import com.example.arcticappfinal.databinding.WordClickableItemBinding
 
 
 class WordClickableAdapter(
-    private val onWordTipClicked: (word: String) -> Unit,
-    private val onWordAnimationFinished: (word: String) -> Unit,
+    private val onWordTipClicked: (word: SentenceWord) -> Unit,
+    private val onWordAnimationFinished: (word: SentenceWord) -> Unit,
     private val onWordClickedPost: (runnable: Runnable) -> Unit,
     private var sentenceView: View
 ): RecyclerView.Adapter<WordClickableAdapter.ViewHolder>() {
 
-    private var dataSet = emptyList<String>()
-    private var dataBackup = emptyList<String>()
+    private var dataSet = emptyList<SentenceWord>()
+    private var dataBackup = emptyList<SentenceWord>()
 
     class ViewHolder(private val binding: WordClickableItemBinding):
         RecyclerView.ViewHolder(binding.root) {
@@ -26,16 +27,20 @@ class WordClickableAdapter(
         private var clicked = false
 
         fun bind(
-            word: String,
-            onWordTipClicked: (word: String) -> Unit,
-            onWordAnimationFinished: (word: String) -> Unit,
+            word: SentenceWord,
+            onWordTipClicked: (word: SentenceWord) -> Unit,
+            onWordAnimationFinished: (word: SentenceWord) -> Unit,
             sentenceView: View
         ) {
             clicked = false
             restorePosition(binding.root)
-            binding.word.text = word
-            binding.tip.setOnClickListener {
-                onWordTipClicked(word)
+            binding.word.text = word.word
+            if (word.hasTranslation) {
+                binding.tip.setOnClickListener {
+                    onWordTipClicked(word)
+                }
+            } else {
+                binding.tip.visibility = View.GONE
             }
             binding.root.setOnClickListener{
                 if (!clicked) {
@@ -89,15 +94,16 @@ class WordClickableAdapter(
         holder.bind(item, {onWordTipClicked(it)},
             {
                 onWordAnimationFinished(it)
-                removeItem(it)
+                removeItem(it.word)
             }, sentenceView)
     }
 
     private fun removeItem(word: String) {
         onWordClickedPost(Runnable {
             val newDataset = dataSet.toMutableList()
-            val position = newDataset.indexOf(word)
-            newDataset.remove(word)
+            val wordToRemove = newDataset.find { item -> item.word == word }
+            val position = newDataset.indexOf(wordToRemove)
+            newDataset.remove(wordToRemove)
             dataSet = newDataset
             notifyItemRemoved(position)
         })
@@ -106,7 +112,7 @@ class WordClickableAdapter(
     override fun getItemCount(): Int = dataSet.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setDataSet(newDataSet: ArrayList<String>) {
+    fun setDataSet(newDataSet: ArrayList<SentenceWord>) {
         dataSet = newDataSet
         dataBackup = newDataSet
         notifyDataSetChanged()

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.arcticapp.data.api.Translator
 import com.example.arcticappfinal.databinding.FragmentTranslatorBinding
 
@@ -23,12 +24,16 @@ class TranslatorFragment : Fragment() {
         viewModel = ViewModelProvider(this)[TranslatorViewModel::class.java]
         binding = FragmentTranslatorBinding.inflate(inflater, container, false)
         binding!!.changeLanguages.setOnClickListener {
-            if (translationMode == Translator.TRANSLATION_MODE_RUS_TO_ENECH) {
-                translationMode = Translator.TRANSLATION_MODE_ENECH_TO_RUS
+            translationMode = if (translationMode == Translator.TRANSLATION_MODE_RUS_TO_ENECH) {
+                Translator.TRANSLATION_MODE_ENECH_TO_RUS
             } else {
-                translationMode = Translator.TRANSLATION_MODE_RUS_TO_ENECH
+                Translator.TRANSLATION_MODE_RUS_TO_ENECH
             }
+            swapText()
             changeLanguageTitles()
+        }
+        binding!!.cross.setOnClickListener { view ->
+            Navigation.findNavController(view).popBackStack()
         }
         binding!!.translateButton.setOnClickListener {
             viewModel.translate(binding!!.input.text.toString(), translationMode)
@@ -40,6 +45,13 @@ class TranslatorFragment : Fragment() {
         return binding!!.root
     }
 
+    private fun swapText() {
+        var translation = binding!!.output.text
+        if (translation == "Перевод...") translation = ""
+        binding!!.output.text = binding!!.input.text.toString()
+        binding!!.input.setText(translation)
+    }
+
     private fun setupSpecialSymbols() {
         binding!!.letterE.setOnClickListener {
             binding!!.input.append("ԑ")
@@ -48,7 +60,7 @@ class TranslatorFragment : Fragment() {
             binding!!.input.append("ң")
         }
         binding!!.letterApostroph.setOnClickListener {
-            binding!!.input.append("'")
+            binding!!.input.append("ô")
         }
         binding!!.letterDoubleApostroph.setOnClickListener {
             binding!!.input.append("”")

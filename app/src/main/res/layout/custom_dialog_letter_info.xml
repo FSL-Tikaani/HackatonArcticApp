@@ -2,47 +2,59 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/dialog_bg"
+    android:background="@drawable/dialog_bg_smaller"
     android:layout_width="match_parent"
-    android:layout_height="400dp">
+    android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tv_info_letter"
+        android:id="@+id/letter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:text="Аа"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/black"
+        android:textSize="64sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/img_letter"
-        android:layout_width="176dp"
-        android:layout_height="201dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_info_letter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_info_letter"
-        app:layout_constraintTop_toTopOf="@+id/tv_info_letter"
-        tools:srcCompat="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/wordOriginal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Аму"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/letter" />
 
     <TextView
-        android:id="@+id/tv_letter_word"
+        android:id="@+id/translation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Арбуз"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/img_letter"
-        app:layout_constraintStart_toStartOf="@+id/img_letter"
-        app:layout_constraintTop_toBottomOf="@+id/img_letter" />
+        android:text="Ладонь"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wordOriginal" />
 
-    <Button
-        android:id="@+id/btn_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:padding="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_baseline_volume_up_24"
+        app:layout_constraintStart_toEndOf="@+id/wordOriginal"
+        app:layout_constraintTop_toTopOf="@+id/wordOriginal" />
+
+    <ImageView
+        android:id="@+id/letterIllustration"
+        android:layout_width="148dp"
+        android:layout_height="148dp"
+        android:src="@color/purple_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

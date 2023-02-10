@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.data.models.SentenceItem
 import com.example.arcticapp.data.models.SentenceTask
+import com.example.arcticapp.data.models.SentenceWord
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.SentenceBuilderItemBinding
 import com.google.android.flexbox.FlexDirection
@@ -29,13 +30,13 @@ class SentenceBuilderAdapter(
         @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
         fun bind(
             sentenceItem: SentenceItem,
-            onWordTipClicked: (word: String) -> Unit,
+            onWordTipClicked: (word: SentenceWord) -> Unit,
             index: Int
         ) {
             task = sentenceItem
             adapter = WordClickableAdapter(
                 onWordTipClicked,
-                {onWordInserted(it)},
+                {onWordInserted(it.word)},
                 { binding.words.post { it.run() }  },
                 binding.enechSentence)
             adapter.setDataSet(sentenceItem.words)
@@ -89,7 +90,7 @@ class SentenceBuilderAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val sentenceItem = dataSet[position]
-        holder.bind(sentenceItem, { onWordTipClicked(it) }, position+1)
+        holder.bind(sentenceItem, { onWordTipClicked(it.word) }, position+1)
     }
 
     override fun getItemCount(): Int = dataSet.size

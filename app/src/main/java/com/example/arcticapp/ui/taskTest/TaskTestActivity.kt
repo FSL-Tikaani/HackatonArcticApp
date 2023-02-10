@@ -32,7 +32,7 @@ class TaskTestActivity : AppCompatActivity() {
         viewModel.task.observe(this) { task ->
             adapter.setDataset(task.tasks)
         }
-        viewModel.loadTask("")
+        viewModel.loadTask(taskID)
         binding.check.setOnClickListener {
             if (!checked) {
                 checkTest()

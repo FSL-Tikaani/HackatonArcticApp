@@ -7,17 +7,84 @@ import com.example.arcticappfinal.R
 class TaskStorage {
     companion object {
         val lessons = arrayListOf(
-            EducationItemModel("lesson1", "Урок 1", "Описание к уроку 1", R.drawable.education_item_img,"video1.mp4"),
-            EducationItemModel("lesson2", "Урок 2", "Описание к уроку 2", R.drawable.education_item_img,"video2.mp4"),
-            EducationItemModel("lesson3", "Урок 3", "Описание к уроку 3", R.drawable.education_item_img,"video3.mp4"),
-            EducationItemModel("lesson4", "Урок 4", "Описание к уроку 4", R.drawable.education_item_img,"video4.mp4"),
+            EducationItemModel(
+                "Урок 1: первые шаги в энецкий язык",
+                "В этом уроке вы научитесь здороваться, прощатся, знакомится, считать от 1 до 10, а такжеузнаете о указательных и личных местоимениях",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson1",
+                3
+            ),
+            EducationItemModel(
+                "Урок 2: семья и занятия",
+                "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson2",
+                2
+            ),
+            EducationItemModel(
+                "Урок 3: все чем-то заняты",
+                "",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson3",
+                0
+            ),
+            EducationItemModel(
+                "Урок 4: еда и продукты",
+                "В этом уроке вы изучите слова на тему \"Еда и продукты\", научитесь гворить о своих вкусовых предпочтениях, а также считать от 11 до 20",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson4",
+                2
+            ),
+            EducationItemModel(
+                "Урок 5: в магазине",
+                "В этом уроке вы познакомитесь с энецким алфавитом и познакомитесь со словаме по теме \"Магазин\"",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson5",
+                3
+            ),
+            EducationItemModel(
+                "Урок 6: в населённом пункте",
+                "",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson6",
+                0
+            ),
+            EducationItemModel(
+                "Урок 7: образование и учёба",
+                "",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson7",
+                0
+            ),
+            EducationItemModel(
+                "Урок 8: здоровье",
+                "",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson8",
+                0
+            ),
+            EducationItemModel(
+                "Урок 9: такие разные вопросы",
+                "",
+                R.drawable.education_item_img,
+                R.raw.video1,
+                "lesson9",
+                0
+            )
         )
 
         val lessonTasks = hashMapOf(
             "lesson1" to arrayListOf(
                 PracticeTask(TaskAdapter.TASK_TEST, "lesson1_1"),
                 PracticeTask(TaskAdapter.TASK_COMPARE, "lesson1_2"),
-                PracticeTask(TaskAdapter.TASK_SENTENCE, "lesson1_3")
             ),
             "lesson2" to arrayListOf(
                 PracticeTask(TaskAdapter.TASK_TEST, "lesson2_1"),
@@ -27,7 +94,6 @@ class TaskStorage {
             "lesson4" to arrayListOf(
                 PracticeTask(TaskAdapter.TASK_TEST, "lesson4_1"),
                 PracticeTask(TaskAdapter.TASK_COMPARE, "lesson4_2"),
-                PracticeTask(TaskAdapter.TASK_SENTENCE, "lesson4_3")
             ),
             "lesson5" to arrayListOf(
                 PracticeTask(TaskAdapter.TASK_TEST, "lesson5_1"),
@@ -50,9 +116,9 @@ class TaskStorage {
                         0
                     ),
                     TestItem(
-                        "Выберите верный перевод слова он",
+                        "Выберите верный перевод слова \"он\"",
                         arrayListOf("Модь", "Уу”", "Буу”"),
-                        3
+                        2
                     )
                 )
             ),
@@ -61,18 +127,18 @@ class TaskStorage {
                 arrayListOf(
                     TestItem(
                         "Как дословно переводится энецкое слово \"мяз тԑр\"?",
-                        arrayListOf("люди в доме", "семья","содержимое чума"),
+                        arrayListOf("Люди в доме", "Семья","Содержимое чума"),
                         2
                     ),
                     TestItem(
-                        "Есть в энецком языке двойственное число?",
-                        arrayListOf("Да", "Нет"),
+                        "Чем занимаются дети в школе?",
+                        arrayListOf("Паздуна”", "Паздучь", "Мосра”", "Мозрашь"),
                         0
                     ),
                     TestItem(
-                        "Выберите верный перевод слова он",
-                        arrayListOf("Модь", "Уу”", "Буу”"),
-                        0
+                        "Чем занимаюся родители?",
+                        arrayListOf("Паздуна”", "Паздучь", "Мосра”", "Мозрашь"),
+                        2
                     )
                 )
             ),
@@ -80,19 +146,19 @@ class TaskStorage {
             "lesson4_1" to TestTask(
                 arrayListOf(
                     TestItem(
-                        "Есть ли в энецком языке вежливая форма обращения?",
-                        arrayListOf("Да", "Нет"),
+                        "Й в конце обозначает...",
+                        arrayListOf("Притяжательность", "Множественное число", "Инфинитив"),
+                        0
+                    ),
+                    TestItem(
+                        "Какая приставка используется для образования числительных от 11 до 19?",
+                        arrayListOf("Бикоз", "Бозат", "Бикоз бозат"),
+                        2
+                    ),
+                    TestItem(
+                        "Что обозначает уселение гортанного звука?",
+                        arrayListOf("Притяжательность", "Множественное число", "Инфинитив"),
                         1
-                    ),
-                    TestItem(
-                        "Есть в энецком языке двойственное число?",
-                        arrayListOf("Да", "Нет"),
-                        0
-                    ),
-                    TestItem(
-                        "Выберите верный перевод слова \"он\"?",
-                        arrayListOf("Модь", "Уу”", "Буу”"),
-                        0
                     )
                 )
             ),
@@ -100,14 +166,14 @@ class TaskStorage {
             "lesson5_1" to TestTask(
                 arrayListOf(
                     TestItem(
-                        "Как дословно переводится энецкое слово \"мяз тԑр\"?",
-                        arrayListOf("люди в доме", "семья","содержимое чума"),
+                        "Сколько букв в энецком алфавите?",
+                        arrayListOf("27", "33", "37"),
                         2
                     ),
                     TestItem(
-                        "Есть в энецком языке двойственное число?",
-                        arrayListOf("Да", "Нет"),
-                        0
+                        "Сколько специфичных звуков есть в энецком алфавите?",
+                        arrayListOf("2", "4", "Нет"),
+                        1
                     ),
                     TestItem(
                         "Выберите верный перевод слова он",
@@ -129,46 +195,71 @@ class TaskStorage {
 
             "lesson2_2" to CompareTask(
                 arrayListOf(
-                    CompareWord("Мôдьна” мяна” тԑр нэху” энчи”", "В нашей семье три человек"),
-                    CompareWord("Мôдь ңôлю каса касай”", "У меня один брат"),
-                    CompareWord("Мôдь ԑсый” тэ понида", "Мой отец оленевод"),
-                    CompareWord("Ԑԑбь” мôдь мяз понида", "Моя мать чумработница")
+                    CompareWord("Дисы", "Дед"),
+                    CompareWord("Каза", "Бабушка"),
+                    CompareWord("Чизԑйчу", "Дядя"),
+                    CompareWord("Ԑяйчу", "Тётя")
                 ),
-                arrayListOf("У меня один брат","Моя мать чумработница","Мой отец оленевод","В нашей семье три человек")
+                arrayListOf("Тётя","Дед","Бабушка","Дядя")
             ),
 
             "lesson4_2" to CompareTask(
                 arrayListOf(
-                    CompareWord("Уу” нил обу", "Как твое имя?"),
-                    CompareWord("Мôдь ним", "Меня зовут"),
-                    CompareWord("Дорова ңай”", "Здравствуйте"),
-                    CompareWord("Локичу ңай”", "До свидания")
+                    CompareWord("озы", "ягода"),
+                    CompareWord("буй", "бульон"),
+                    CompareWord("кари", "рыба"),
+                    CompareWord("кирба", "хлеб"),
+                    CompareWord("оса", "мясо")
                 ),
-                arrayListOf("Меня зовут","До свидания", "Здравствуйте", "Как твое имя?")
+                arrayListOf("рыба","ягода", "мясо", "хлеб", "бульон")
             ),
 
             "lesson5_2" to CompareTask(
                 arrayListOf(
-                    CompareWord("Уу” нил обу", "Как твое имя?"),
-                    CompareWord("Мôдь ним", "Меня зовут"),
-                    CompareWord("Дорова ңай”", "Здравствуйте"),
-                    CompareWord("Локичу ңай”", "До свидания")
+                    CompareWord("лапка", "магазин"),
+                    CompareWord("конфетка", "конфета"),
+                    CompareWord("дю", "масло"),
+                    CompareWord("пасиба", "спасибо")
                 ),
-                arrayListOf("Меня зовут","До свидания", "Здравствуйте", "Как твое имя?")
+                arrayListOf("спасибо","масло", "магазин", "конфета")
             ),
 
-
-            "lesson1_3" to SentenceTask(
+            "lesson2_3" to SentenceTask(
                 arrayListOf(
                     SentenceItem(
-                        "Здесь будет предложение на русском",
-                        "2 1 3 4",
-                        arrayListOf("1", "2", "3", "4")
+                        "В нашей семье три человека",
+                        "мôдьна” мяна” тԑр нэху” энчи”",
+                        arrayListOf(SentenceWord("мяна”"), SentenceWord("энчи”"), SentenceWord("мôдьна”"), SentenceWord("нэху”"), SentenceWord("тԑр"))
                     ),
                     SentenceItem(
-                        "Здесь будет предложение на русском",
-                        "Правильное предложение",
-                        arrayListOf("слово1", "слово2", "слово3", "слово4")
+                        "У меня один брат",
+                        "мôдь ңôлю каса касай”",
+                        arrayListOf(SentenceWord("каса"), SentenceWord("касай”"), SentenceWord("мôдь"), SentenceWord("ңôлю"))
+                    ),
+                    SentenceItem(
+                        "Мой отец оленевод",
+                        "мôдь ԑсый” тэ понида",
+                        arrayListOf(SentenceWord("тэ"), SentenceWord("мôдь"), SentenceWord("ԑсый”"), SentenceWord("понида"))
+                    ),
+                )
+            ),
+
+            "lesson5_3" to SentenceTask(
+                arrayListOf(
+                    SentenceItem(
+                        "У вас есть магазин?",
+                        "ууда” лапка тонээ",
+                        arrayListOf(SentenceWord("тонээ"), SentenceWord("ууда”"), SentenceWord("лапка"))
+                    ),
+                    SentenceItem(
+                        "Магазин сейчас открыт?",
+                        "лапка тэза” нԑԑ",
+                        arrayListOf(SentenceWord("тэза”"), SentenceWord("нԑԑ"), SentenceWord("лапка"))
+                    ),
+                    SentenceItem(
+                        "Я хочу купить хлеба",
+                        "мôдь кирба тыдымад комаз”",
+                        arrayListOf(SentenceWord("кирба"), SentenceWord("мôдь"), SentenceWord("тыдымад"), SentenceWord("комаз”"))
                     ),
                 )
             )

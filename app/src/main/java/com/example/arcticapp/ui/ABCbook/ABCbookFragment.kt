@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.arcticapp.data.models.LetterModel
@@ -34,7 +35,9 @@ class ABCbookFragment : Fragment() {
         //init recycler
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = GridLayoutManager(binding.root.context, 3)
-
+        binding.cross.setOnClickListener { view ->
+            Navigation.findNavController(view).popBackStack()
+        }
         adapter = SmallLetterAdapter { item ->
             LetterInfoDialog(item).show(childFragmentManager, "tag")
         }
