@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/taskIcon"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
         android:src="@drawable/ic_baseline_menu_book_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,11 +22,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:text="Название задания"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/taskIcon"
         app:layout_constraintTop_toTopOf="@+id/taskIcon" />

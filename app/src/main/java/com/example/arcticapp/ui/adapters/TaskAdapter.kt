@@ -34,7 +34,7 @@ class TaskAdapter(
                 when(practiceTask.task.type) {
                     TASK_TEST -> R.drawable.ic_baseline_edit_note_24
                     TASK_SENTENCE -> R.drawable.ic_baseline_playlist_add_check_24
-                    TASK_COMPARE -> R.drawable.translator_icon
+                    TASK_COMPARE -> R.drawable.logo_dictation
                     else -> R.drawable.ic_baseline_menu_book_24
                 }))
             binding.root.setOnClickListener {
@@ -49,10 +49,6 @@ class TaskAdapter(
             TASK_SENTENCE -> itemView.context.getString(R.string.sentences)
             TASK_COMPARE -> itemView.context.getString(R.string.comparing)
             else -> ""
-        }
-
-        fun checkTask(): Boolean {
-            return true
         }
     }
 
