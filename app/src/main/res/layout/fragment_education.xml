@@ -43,4 +43,14 @@
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/education_item"
         tools:spanCount="2" />
+
+    <ImageView
+        android:id="@+id/img_btn_save_videos"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/headingText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/headingText"
+        app:srcCompat="@drawable/ic_baseline_edit_note_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

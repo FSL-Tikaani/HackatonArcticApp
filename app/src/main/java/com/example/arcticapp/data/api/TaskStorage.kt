@@ -7,78 +7,10 @@ import com.example.arcticappfinal.R
 class TaskStorage {
     companion object {
         val lessons = arrayListOf(
-            EducationItemModel(
-                "Урок 1: первые шаги в энецкий язык",
-                "В этом уроке вы научитесь здороваться, прощатся, знакомится, считать от 1 до 10, а такжеузнаете о указательных и личных местоимениях",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson1",
-                3
-            ),
-            EducationItemModel(
-                "Урок 2: семья и занятия",
-                "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson2",
-                3
-            ),
-            EducationItemModel(
-                "Урок 3: все чем-то заняты",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson3",
-                3
-            ),
-            EducationItemModel(
-                "Урок 4: еда и продукты",
-                "В этом уроке вы изучите слова на тему \"Еда и продукты\", научитесь гворить о своих вкусовых предпочтениях, а также считать от 11 до 20",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson4",
-                3
-            ),
-            EducationItemModel(
-                "Урок 5: в магазине",
-                "В этом уроке вы познакомитесь с энецким алфавитом и познакомитесь со словаме по теме \"Магазин\"",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson5",
-                3
-            ),
-            EducationItemModel(
-                "Урок 6: в населённом пункте",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson6",
-                3
-            ),
-            EducationItemModel(
-                "Урок 7: образование и учёба",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson7",
-                3
-            ),
-            EducationItemModel(
-                "Урок 8: здоровье",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson8",
-                3
-            ),
-            EducationItemModel(
-                "Урок 9: такие разные вопросы",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson9",
-                3
-            )
+            EducationItemModel("lesson1", "Урок 1", "Описание к уроку 1", R.drawable.education_item_img,"video1.mp4"),
+            EducationItemModel("lesson2", "Урок 2", "Описание к уроку 2", R.drawable.education_item_img,"video2.mp4"),
+            EducationItemModel("lesson3", "Урок 3", "Описание к уроку 3", R.drawable.education_item_img,"video3.mp4"),
+            EducationItemModel("lesson4", "Урок 4", "Описание к уроку 4", R.drawable.education_item_img,"video4.mp4"),
         )
 
         val lessonTasks = hashMapOf(

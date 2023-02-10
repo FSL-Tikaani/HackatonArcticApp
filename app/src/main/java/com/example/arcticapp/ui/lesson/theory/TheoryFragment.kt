@@ -1,23 +1,34 @@
 package com.example.arcticapp.ui.lesson.theory
 
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.arcticapp.data.downloader.AndroidDownloader
+import com.example.arcticapp.data.downloader.DownloadCompletedReceiver
 import com.example.arcticapp.data.models.EducationItemModel
-import com.example.arcticapp.data.models.LessonTheory
 import com.example.arcticappfinal.databinding.FragmentTheoryBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.StyledPlayerView
-import com.google.common.collect.ImmutableList
+import java.io.File
+
 
 class TheoryFragment(
     private val lessonID: String
@@ -31,13 +42,14 @@ class TheoryFragment(
     private lateinit var progressBar: ProgressBar
     private var lastTimePlayer: Long = 0
 
+
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTheoryBinding.inflate(inflater)
         viewModel = ViewModelProvider(this)[TheoryViewModel::class.java]
-
         viewModel.loadTheory(lessonID)
 
         viewModel.theory.observe(viewLifecycleOwner) { theory ->
@@ -48,7 +60,16 @@ class TheoryFragment(
         //init videoPlayer
         progressBar = binding.progressBar
         setupPlayer()
-        addMP4Files(lessonModel.srcVideo, lastTimePlayer)
+        addMP4Files(lastTimePlayer)
+        //status
+        binding.tvStatusVideo.setOnClickListener {
+            if(!isLocalVideoExists(lessonModel.fileVideoName)){
+                val downloader = AndroidDownloader(requireContext(), lessonModel.fileVideoName)
+                downloader.downloadFile(lessonModel.urlVideo)
+            }else{
+                Toast.makeText(requireContext(), "Видео уже загружено", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         return binding.root
     }
@@ -59,9 +80,9 @@ class TheoryFragment(
         playerView.setFullscreenButtonClickListener {
             Log.d("player.currentPosition", player.currentPosition.toString())
             val activity = Intent(context, FullScreenPlayerActivity::class.java)
-            activity.putExtra("timeStart", player.currentPosition)
-            activity.putExtra("fileName", lessonModel.srcVideo)
-            activity.putExtra("lessonID", lessonID)
+            activity.putExtra("fileName", lessonModel.fileVideoName)
+            activity.putExtra("urlVideo", lessonModel.urlVideo)
+            activity.putExtra("lastTimePlayer", lastTimePlayer)
             startActivity(activity)
         }
 
@@ -80,17 +101,31 @@ class TheoryFragment(
         })
     }
 
-    private fun addMP4Files(video: Int, lastTimePlayer: Long){
-        val uriVideo = Uri.parse(
-            "android.resource://" + activity?.packageName + "/" + video)
-        val mediaItem = MediaItem.fromUri(uriVideo)
+    private fun addMP4Files(lastTimePlayer: Long){
+        val mediaItem:MediaItem
 
-        val newItems: List<MediaItem> = ImmutableList.of(
-            mediaItem
-        )
+        if(isLocalVideoExists(lessonModel.fileVideoName)){
+            val path = binding.root.context.getExternalFilesDir(null)
+            val videoPath = File(path, lessonModel.fileVideoName)
+
+            mediaItem = MediaItem.fromUri(videoPath.toUri())
+        }else{
+            val uriVideo = Uri.parse(
+                lessonModel.urlVideo
+            )
+            mediaItem = MediaItem.fromUri(uriVideo)
+        }
+
+        if(player.mediaItemCount == 0){
+            player.addMediaItem(mediaItem)
+        }else{
+            player.removeMediaItems(0, player.mediaItemCount)
+            player.addMediaItem(mediaItem)
+        }
+
         player.seekTo(lastTimePlayer)
-        player.addMediaItems(newItems)
         player.prepare()
+        player.playWhenReady = false;
     }
 
     override fun onStop() {
@@ -103,7 +138,7 @@ class TheoryFragment(
     override fun onResume() {
         super.onResume()
         setupPlayer()
-        addMP4Files(lessonModel.srcVideo, lastTimePlayer)
+        addMP4Files(lastTimePlayer)
         Log.d("theory_fragment", "onResume()")
     }
 
@@ -121,8 +156,21 @@ class TheoryFragment(
             player.release()
             Log.d("theory_fragment", "onDesctroy()")
         }catch (ex: Exception){
-            Log.d("ErrorPlayer", ex.stackTraceToString())
+            Log.d("ErrorPla yer", ex.stackTraceToString())
         }
         Log.d("player", "onSaveInstanceState: " + player.currentPosition)
+    }
+
+    private fun isLocalVideoExists(fileName: String): Boolean{
+        val path = binding.root.context.getExternalFilesDir(null)
+        val newFolder = File(path, fileName)
+
+        if(newFolder.exists()){
+            binding.tvStatusVideo.text = "Видео может воспроизводится без Интернета"
+            return true
+        }else{
+            binding.tvStatusVideo.text = "Видео воспроизводится через Интернет"
+            return false
+        }
     }
 }

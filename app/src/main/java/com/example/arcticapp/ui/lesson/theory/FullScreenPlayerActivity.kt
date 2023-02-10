@@ -8,6 +8,7 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
+import androidx.core.net.toUri
 import com.example.arcticapp.ui.lesson.LessonActivity
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.ActivityFullScreenPlayerBinding
@@ -16,6 +17,7 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.StyledPlayerView
 import com.google.common.collect.ImmutableList
+import java.io.File
 
 class FullScreenPlayerActivity : AppCompatActivity() {
 
@@ -26,8 +28,9 @@ class FullScreenPlayerActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
 
     private var timeStart: Long = 0
-    private var fileName: Int = R.raw.video1
-    private var lessonID: String = "lesson1"
+    private var fileName: String = ""
+    private var urlVideo: String = ""
+    private var lastTimePlayer: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +39,18 @@ class FullScreenPlayerActivity : AppCompatActivity() {
         progressBar = binding.progressBar
 
         timeStart = intent.getLongExtra("timeStart", 0)
-        fileName = intent.getIntExtra("fileName", R.raw.video1)
-        lessonID = intent.getStringExtra("lessonID").toString()
 
-        setupPlayer(timeStart)
-        addMP4Files(fileName)
+        fileName = intent.getStringExtra("fileName")!!
+        urlVideo = intent.getStringExtra("urlVideo")!!
+        lastTimePlayer = intent.getLongExtra("lastTimePlayer", 0)
+
+        setupPlayer()
+        addMP4Files(fileName, urlVideo, lastTimePlayer)
 
         setContentView(binding.root)
     }
-    private fun setupPlayer(timeStart: Long) {
+
+    private fun setupPlayer() {
         player = ExoPlayer.Builder(this).build()
         playerView = binding.videoView
         playerView.setFullscreenButtonClickListener {
@@ -52,8 +58,6 @@ class FullScreenPlayerActivity : AppCompatActivity() {
             player.release()
             onBackPressed()
         }
-
-        player.seekTo(timeStart)
 
         playerView.player = player
         player.addListener(object : Player.Listener{
@@ -70,18 +74,29 @@ class FullScreenPlayerActivity : AppCompatActivity() {
         })
     }
 
-    private fun addMP4Files(fileName: Int) {
-        val uriVideo = Uri.parse(
-            "android.resource://$packageName/$fileName"
-        )
-        val mediaItem = MediaItem.fromUri(uriVideo)
+    private fun addMP4Files(fileName: String, urlVideo: String, lastTimePlayer: Long) {
+        val mediaItem:MediaItem
 
-        val newItems: List<MediaItem> = ImmutableList.of(
-            mediaItem
-        )
+        if(isLocalVideoExists(fileName)){
+            val path = binding.root.context.getExternalFilesDir(null)
+            val videoPath = File(path, fileName)
 
-        player.addMediaItems(newItems)
+            mediaItem = MediaItem.fromUri(videoPath.toUri())
+        }else{
+            val uriVideo = Uri.parse(urlVideo)
+            mediaItem = MediaItem.fromUri(uriVideo)
+        }
+
+        if(player.mediaItemCount == 0){
+            player.addMediaItem(mediaItem)
+        }else{
+            player.removeMediaItems(0, player.mediaItemCount)
+            player.addMediaItem(mediaItem)
+        }
+
+        player.seekTo(lastTimePlayer)
         player.prepare()
+        player.playWhenReady = false;
     }
 
     override fun onStop() {
@@ -92,8 +107,8 @@ class FullScreenPlayerActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupPlayer(timeStart)
-        addMP4Files(fileName)
+        setupPlayer()
+        addMP4Files(fileName, urlVideo, lastTimePlayer)
     }
 
     override fun onDestroy() {
@@ -105,5 +120,12 @@ class FullScreenPlayerActivity : AppCompatActivity() {
             Log.d("ErrorPlayer", ex.stackTraceToString())
         }
         Log.d("player", "onSaveInstanceState: " + player.currentPosition)
+    }
+
+    private fun isLocalVideoExists(fileName: String): Boolean{
+        val path = binding.root.context.getExternalFilesDir(null)
+        val newFolder = File(path, fileName)
+
+        return newFolder.exists()
     }
 }
