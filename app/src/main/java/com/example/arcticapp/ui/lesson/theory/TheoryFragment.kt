@@ -19,6 +19,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.arcticapp.data.downloader.AndroidDownloader
 import com.example.arcticapp.data.downloader.DownloadCompletedReceiver
 import com.example.arcticapp.data.models.EducationItemModel
+import com.example.arcticapp.ui.dialogs.QuestionDialogFragment
+import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.FragmentTheoryBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -66,6 +68,12 @@ class TheoryFragment(
             }else{
                 Toast.makeText(requireContext(), "Видео уже загружено", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.imgQuestionDownloading.setOnClickListener {
+            val myQuestionDialog = QuestionDialogFragment(R.string.answer_text)
+            val manager = childFragmentManager
+            myQuestionDialog.show(manager, "")
         }
 
         return binding.root

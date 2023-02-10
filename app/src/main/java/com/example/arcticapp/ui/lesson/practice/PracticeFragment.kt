@@ -49,6 +49,8 @@ class PracticeFragment(
         return binding.root
     }
 
+
+
     override fun onResume() {
         super.onResume()
         viewModel.loadPracticeList(lessonID)
