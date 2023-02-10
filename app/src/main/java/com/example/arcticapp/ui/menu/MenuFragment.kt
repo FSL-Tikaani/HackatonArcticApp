@@ -25,7 +25,7 @@ class MenuFragment : Fragment() {
             Navigation.findNavController(it).navigate(R.id.navigation_vocabulary)
         }
         binding.accountBlock.setOnClickListener {
-            // TODO: Account navigation
+            Navigation.findNavController(it).navigate(R.id.navigation_achievement)
         }
         binding.translatorBlock.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.navigation_translator)

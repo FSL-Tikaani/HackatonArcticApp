@@ -9,6 +9,8 @@ import com.example.arcticapp.ui.adapters.SentenceBuilderAdapter
 import com.example.arcticapp.ui.adapters.TaskAdapter
 import com.example.arcticapp.ui.adapters.TestAdapter
 import com.example.arcticapp.ui.congratulations.CongratulationsActivity
+import com.example.arcticapp.ui.dialogs.ExitDialogFragment
+import com.example.arcticapp.ui.dialogs.QuestionDialogFragment
 import com.example.arcticappfinal.R
 import com.example.arcticappfinal.databinding.ActivityTaskTestBinding
 
@@ -42,6 +44,30 @@ class TaskTestActivity : AppCompatActivity() {
             }
         }
         setContentView(binding.root)
+        //on Click
+        binding.tip.setOnClickListener {
+            //reference
+            //передаём R.string.answer_text для подстановки в TextView DialogFragment
+            val myQuestionDialog = QuestionDialogFragment(R.string.answer_text_test)
+            val manager = supportFragmentManager
+            myQuestionDialog.show(manager, "")
+        }
+        //exit to ???
+        binding.cross.setOnClickListener {
+            openExitDialog()
+        }
+    }
+
+    private fun openExitDialog() {
+        val myExitDialog = ExitDialogFragment{
+            super.onBackPressed()
+        }
+        val manager = supportFragmentManager
+        myExitDialog.show(manager, "")
+    }
+
+    override fun onBackPressed() {
+        openExitDialog()
     }
 
     private fun checkTest() {

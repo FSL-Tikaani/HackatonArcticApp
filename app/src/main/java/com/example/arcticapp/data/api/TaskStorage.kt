@@ -6,25 +6,76 @@ import com.example.arcticappfinal.R
 
 class TaskStorage {
     companion object {
+        val workingLessons = arrayListOf<String>("lesson1", "lesson2", "lesson3", "lesson4", "lesson5")
         val lessons = arrayListOf(
-            EducationItemModel("lesson1", "Урок 1: первые шаги в энецкий язык", "В этом уроке вы научитесь здороваться, прощатся, знакомится, считать от 1 до 10, а такжеузнаете о указательных и личных местоимениях", R.drawable.education_item_img, 3,
-                "video1.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson1%20(1).mp4?alt=media&token=61510d1b-bf24-40c7-bbd8-164f48dc7770"),
-            EducationItemModel("lesson2", "Урок 2: семья и занятия", "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре", R.drawable.education_item_img, 2,
-                "video2.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson2%20(1).mp4?alt=media&token=0b090900-6d1e-4058-92ec-6260f5af6012"),
-            EducationItemModel("lesson3", "Урок 3: все чем-то заняты", "В этом уроке вы познакомитесь с глаголами отдыхать, спать, есть", R.drawable.education_item_img, 0,
-                "video3.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
-            EducationItemModel("lesson4", "Урок 4: все чем-то заняты", "В этом уроке вы изучите слова на тему \"Еда и продукты\", научитесь гворить о своих вкусовых предпочтениях, а также считать от 11 до 20", R.drawable.education_item_img, 0,
-                "video4.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson4%20(1).mp4?alt=media&token=fb66255d-9709-4fa9-9137-ab438f696c02"),
-            EducationItemModel("lesson5", "Урок 5: в магазине", "В этом уроке вы познакомитесь с энецким алфавитом и познакомитесь со словаме по теме \"Магазин\"", R.drawable.education_item_img, 0,
-                "video5.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson5%20(1).mp4?alt=media&token=94445fd7-7f97-42b4-b60d-eec0041f9c03"),
-            EducationItemModel("lesson6", "Урок 6: в населённом пункте", "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре", R.drawable.education_item_img, 2,
-                "video6.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
-            EducationItemModel("lesson7", "Урок 7: образование и учёба", "Описание к первому уроку", R.drawable.education_item_img, 0,
-                "video7.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
-            EducationItemModel("lesson8", "Урок 8: здоровье", "Описание к первому уроку", R.drawable.education_item_img, 0,
-                "video8.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
-            EducationItemModel("lesson9", "Урок 9: такие разные вопросы", "Описание к первому уроку", R.drawable.education_item_img, 0,
-                "video9.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
+            EducationItemModel(
+                "Урок 1: первые шаги в энецкий язык",
+                "В этом уроке вы научитесь здороваться, прощатся, знакомится, считать от 1 до 10, а такжеузнаете о указательных и личных местоимениях",
+                R.drawable.lesson1,
+                "lesson1",
+                3,
+                "video1.mp4", "https://firebasestorage.googleapis.com/v0/b/shoppinglistapp-ae990.appspot.com/o/1.mp4?alt=media&token=a9c9794a-2656-4724-8899-e74292ba64c5"
+            ),
+            EducationItemModel(
+                "Урок 2: семья и занятия",
+                "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре",
+                R.drawable.lesson2,
+                "lesson2",
+                2,
+                "video2.mp4", "https://firebasestorage.googleapis.com/v0/b/shoppinglistapp-ae990.appspot.com/o/2.mp4?alt=media&token=6e02e417-ae03-43ee-8955-adb89bc750a0"
+            ),
+            EducationItemModel(
+                "Урок 3: все чем-то заняты",
+                "",
+                R.drawable.lesson3,
+                "lesson3",
+                0,
+                "video3.mp4", "https://firebasestorage.googleapis.com/v0/b/shoppinglistapp-ae990.appspot.com/o/3.mp4?alt=media&token=47fc8853-1254-4c7c-aab4-1e737a56c969"
+            ),
+            EducationItemModel(
+                "Урок 4: еда и продукты",
+                "В этом уроке вы изучите слова на тему \"Еда и продукты\", научитесь гворить о своих вкусовых предпочтениях, а также считать от 11 до 20",
+                R.drawable.lesson4,
+                "lesson4",
+                2,
+                "video4.mp4", "https://firebasestorage.googleapis.com/v0/b/shoppinglistapp-ae990.appspot.com/o/4.mp4?alt=media&token=d5c68f59-314c-4205-8638-40834fa92b21"
+            ),
+            EducationItemModel(
+                "Урок 5: в магазине",
+                "В этом уроке вы познакомитесь с энецким алфавитом и познакомитесь со словаме по теме \"Магазин\"",
+                R.drawable.lesson5,
+                "lesson5",
+                3,
+                "video5.mp4", "https://firebasestorage.googleapis.com/v0/b/shoppinglistapp-ae990.appspot.com/o/5.mp4?alt=media&token=cc22a2cc-01c4-4600-859a-7935edd59af3"
+            ),
+            EducationItemModel(
+                "Урок 6: в населённом пункте",
+                "",
+                R.drawable.lesson6,
+                "lesson6",
+                0
+            ),
+            EducationItemModel(
+                "Урок 7: образование и учёба",
+                "",
+                R.drawable.lessson7,
+                "lesson7",
+                0
+            ),
+            EducationItemModel(
+                "Урок 8: здоровье",
+                "",
+                R.drawable.lesson8,
+                "lesson8",
+                0
+            ),
+            EducationItemModel(
+                "Урок 9: такие разные вопросы",
+                "",
+                R.drawable.lesson9,
+                "lesson9",
+                0
+            )
         )
 
         val lessonTasks = hashMapOf(
@@ -242,6 +293,7 @@ class TaskStorage {
                     ),
                 )
             )
+
         )
     }
 }

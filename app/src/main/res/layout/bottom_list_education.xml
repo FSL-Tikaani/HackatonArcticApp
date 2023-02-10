@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_bottom_list_education_name_lesson"
+        android:id="@+id/tvBottomListEducationNameLesson"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -41,7 +41,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/taskProgress"
-        app:layout_constraintStart_toStartOf="@+id/tv_bottom_list_education_name_lesson" />
+        app:layout_constraintStart_toStartOf="@+id/tvBottomListEducationNameLesson" />
 
     <TextView
         android:id="@+id/taskProgress"
@@ -52,7 +52,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/img_bottom_list_education_img_lesson"
-        app:layout_constraintStart_toStartOf="@+id/tv_bottom_list_education_name_lesson" />
+        app:layout_constraintStart_toStartOf="@+id/tvBottomListEducationNameLesson" />
 
     <TextView
         android:id="@+id/tv_bottom_list_education_description"

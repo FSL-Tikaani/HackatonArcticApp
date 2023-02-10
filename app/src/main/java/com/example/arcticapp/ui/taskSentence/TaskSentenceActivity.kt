@@ -51,7 +51,7 @@ class TaskSentenceActivity : AppCompatActivity() {
         binding.tip.setOnClickListener {
             //reference
             //передаём R.string.answer_text для подстановки в TextView DialogFragment
-            val myQuestionDialog = QuestionDialogFragment(R.string.answer_text)
+            val myQuestionDialog = QuestionDialogFragment(R.string.answer_text_sentence)
             val manager = supportFragmentManager
             myQuestionDialog.show(manager, "")
         }

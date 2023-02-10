@@ -41,12 +41,16 @@
         app:layout_constraintTop_toBottomOf="@+id/wordOriginal" />
 
     <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:padding="4dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:id="@+id/voice"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginStart="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="4dp"
         android:src="@drawable/ic_baseline_volume_up_24"
+        app:layout_constraintBottom_toBottomOf="@+id/wordOriginal"
         app:layout_constraintStart_toEndOf="@+id/wordOriginal"
         app:layout_constraintTop_toTopOf="@+id/wordOriginal" />
 
@@ -54,7 +58,7 @@
         android:id="@+id/letterIllustration"
         android:layout_width="148dp"
         android:layout_height="148dp"
-        android:src="@color/purple_500"
+        android:src="@drawable/translation_field_background_unselected"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

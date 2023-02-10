@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/translation_field_background_unselected"
+    android:padding="8dp"
+    android:layout_margin="8dp">
+
+    <TextView
+        android:id="@+id/lessonName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Название урока"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Получено очков: 0/1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskProgress" />
+
+    <TextView
+        android:id="@+id/taskProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Заданий выполнено: 0/1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lessonName" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

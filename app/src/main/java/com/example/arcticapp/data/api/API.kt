@@ -89,5 +89,7 @@ class API {
 
             return LessonResults(completedTasks, lessonTasks.size, userScore, maxScore)
         }
+
+        fun isNotWorking(id: String): Boolean = !TaskStorage.workingLessons.contains(id)
     }
 }

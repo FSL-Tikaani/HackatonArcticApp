@@ -3,7 +3,7 @@
     <string name="title_education">Обучение</string>
     <string name="title_vocabulary">Словарь</string>
     <string name="title_translator">Переводчик</string>
-    <string name="word_translate">Перевод</string>
+    <string name="word_translate">Переводчик</string>
     <string name="title_abc">Букварь</string>
     <string name="word_enech">Слово на энецком</string>
     <string name="word_rus">Слово на русском</string>
@@ -36,7 +36,6 @@
     <!-- Strings used for QuestionDialogFragment -->
     <string name="answer_text">Это задание представляет собой сопоставление переводов из верхнего столбца с нижним.\n\nДля того чтобы сопоставить переводы, выберите перевод из верхнего списка, нажмите на него и удерживая палец на экране перетащите выбранный перевод до не переведённого предложения. После этого отпустите палец.
     </string>
-    <string name="answer_text2">Для просмотра видео без подключения к сети Интернет, необходимо загрузить данное видео. Для этого необходимо нажать на текст, расположенный под плеером, который отражает состояние плеера и загрузка  начнётся автоматически.\nПосле загрузки, видео будет доступно без доступа к сети Интернет.</string>
     <string name="result">"Результат: "</string>
     <string name="restart">Перепройти</string>
     <string name="quit">Вернуться в меню</string>
@@ -132,4 +131,8 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="title_achievement">Достижения</string>
+    <string name="answer_text_test">Выбирайте вариант ответа на вопрос с помощью нажатия.\nЧем больше раз вы ответите правильно, тем больше баллов вы получите!</string>
+    <string name="answer_text_compare">Перетаскивайте русские слова на их энецкий перевод.\nЧем меньше ошибок вы сделаете, тем больше вы получите!</string>
+    <string name="answer_text_sentence">Нажимайте на слова, чтобы добавить их в предложение.\nЧем больше предложений вы напишите правильно, тем больше баллов вы получите!</string>
 </resources>

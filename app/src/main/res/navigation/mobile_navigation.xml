@@ -34,4 +34,10 @@
         android:name="com.example.arcticapp.ui.ABCbook.ABCbookFragment"
         android:label="@string/title_translator"
         tools:layout="@layout/fragment_translator" />
+
+    <fragment
+        android:id="@+id/navigation_achievement"
+        android:name="com.example.arcticapp.ui.achievements.AchievementsFragment"
+        android:label="@string/title_achievement"
+        tools:layout="@layout/fragment_achievements" />
 </navigation>

@@ -44,6 +44,9 @@ class EducationCustomBottomList(private val educationItemModel: EducationItemMod
         binding.tvBottomListEducationNameLesson.text = educationItemModel.name
         binding.tvBottomListEducationDescription.text = educationItemModel.description
         binding.btnBottomListEducationStartEducation.setOnClickListener { clickedItem (educationItemModel.id) }
+        binding.imgBottomListEducationImgLesson.setImageDrawable(
+            ContextCompat.getDrawable(requireContext(), educationItemModel.icon)
+        )
 
         return binding.root
     }

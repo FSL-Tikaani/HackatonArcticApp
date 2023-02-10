@@ -54,10 +54,6 @@ class EducationFragment : Fragment() {
         }
 
         recyclerView.adapter = adapter
-
-        binding!!.imgBtnSaveVideos.setOnClickListener {
-
-        }
         return binding!!.root
     }
 

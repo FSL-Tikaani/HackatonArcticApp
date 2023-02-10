@@ -23,7 +23,7 @@ class QuestionDialogFragment(val textAnswer: Int) : AppCompatDialogFragment(){
         tvAnswer.text = getString(textAnswer)
 
         //dismiss dialog
-        val btn: Button = customView.findViewById(R.id.btn_exit)
+        val btn: TextView = customView.findViewById(R.id.btn_exit)
         btn.setOnClickListener {
             dismiss()
         }

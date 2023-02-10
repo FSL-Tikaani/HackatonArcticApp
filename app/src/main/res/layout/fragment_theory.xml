@@ -12,16 +12,6 @@
         android:layout_height="wrap_content"
         tools:context="com.example.arcticapp.ui.lesson.theory.TheoryFragment">
 
-        <ImageView
-            android:id="@+id/img_question_downloading"
-            android:layout_width="22sp"
-            android:layout_height="22sp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/question_mark_inside_a_circle_svgrepo_com"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_status_video"
-            app:layout_constraintStart_toEndOf="@+id/tv_status_video"
-            app:layout_constraintTop_toTopOf="@+id/tv_status_video" />
-
         <com.google.android.exoplayer2.ui.StyledPlayerView
             android:id="@+id/video_view"
             android:layout_width="match_parent"
@@ -51,6 +41,17 @@
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/video_view" />
+
+        <TextView
+            android:id="@+id/tv_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="Скачать"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_status_video"
+            app:layout_constraintStart_toEndOf="@+id/tv_status_video"
+            app:layout_constraintTop_toTopOf="@+id/tv_status_video" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
