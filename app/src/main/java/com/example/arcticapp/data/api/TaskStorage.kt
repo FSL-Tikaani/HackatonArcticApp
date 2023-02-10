@@ -7,78 +7,24 @@ import com.example.arcticappfinal.R
 class TaskStorage {
     companion object {
         val lessons = arrayListOf(
-            EducationItemModel(
-                "Урок 1: первые шаги в энецкий язык",
-                "В этом уроке вы научитесь здороваться, прощатся, знакомится, считать от 1 до 10, а такжеузнаете о указательных и личных местоимениях",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson1",
-                3
-            ),
-            EducationItemModel(
-                "Урок 2: семья и занятия",
-                "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson2",
-                2
-            ),
-            EducationItemModel(
-                "Урок 3: все чем-то заняты",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson3",
-                0
-            ),
-            EducationItemModel(
-                "Урок 4: еда и продукты",
-                "В этом уроке вы изучите слова на тему \"Еда и продукты\", научитесь гворить о своих вкусовых предпочтениях, а также считать от 11 до 20",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson4",
-                2
-            ),
-            EducationItemModel(
-                "Урок 5: в магазине",
-                "В этом уроке вы познакомитесь с энецким алфавитом и познакомитесь со словаме по теме \"Магазин\"",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson5",
-                3
-            ),
-            EducationItemModel(
-                "Урок 6: в населённом пункте",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson6",
-                0
-            ),
-            EducationItemModel(
-                "Урок 7: образование и учёба",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson7",
-                0
-            ),
-            EducationItemModel(
-                "Урок 8: здоровье",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson8",
-                0
-            ),
-            EducationItemModel(
-                "Урок 9: такие разные вопросы",
-                "",
-                R.drawable.education_item_img,
-                R.raw.video1,
-                "lesson9",
-                0
-            )
+            EducationItemModel("lesson1", "Урок 1: первые шаги в энецкий язык", "В этом уроке вы научитесь здороваться, прощатся, знакомится, считать от 1 до 10, а такжеузнаете о указательных и личных местоимениях", R.drawable.education_item_img, 3,
+                "video1.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson1%20(1).mp4?alt=media&token=61510d1b-bf24-40c7-bbd8-164f48dc7770"),
+            EducationItemModel("lesson2", "Урок 2: семья и занятия", "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре", R.drawable.education_item_img, 2,
+                "video2.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson2%20(1).mp4?alt=media&token=0b090900-6d1e-4058-92ec-6260f5af6012"),
+            EducationItemModel("lesson3", "Урок 3: все чем-то заняты", "В этом уроке вы познакомитесь с глаголами отдыхать, спать, есть", R.drawable.education_item_img, 0,
+                "video3.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
+            EducationItemModel("lesson4", "Урок 4: все чем-то заняты", "В этом уроке вы изучите слова на тему \"Еда и продукты\", научитесь гворить о своих вкусовых предпочтениях, а также считать от 11 до 20", R.drawable.education_item_img, 0,
+                "video4.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson4%20(1).mp4?alt=media&token=fb66255d-9709-4fa9-9137-ab438f696c02"),
+            EducationItemModel("lesson5", "Урок 5: в магазине", "В этом уроке вы познакомитесь с энецким алфавитом и познакомитесь со словаме по теме \"Магазин\"", R.drawable.education_item_img, 0,
+                "video5.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/lesson5%20(1).mp4?alt=media&token=94445fd7-7f97-42b4-b60d-eec0041f9c03"),
+            EducationItemModel("lesson6", "Урок 6: в населённом пункте", "В этом уроке вы познокомитесь со словами по теме семья и чем занимаются люди в тундре", R.drawable.education_item_img, 2,
+                "video6.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
+            EducationItemModel("lesson7", "Урок 7: образование и учёба", "Описание к первому уроку", R.drawable.education_item_img, 0,
+                "video7.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
+            EducationItemModel("lesson8", "Урок 8: здоровье", "Описание к первому уроку", R.drawable.education_item_img, 0,
+                "video8.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
+            EducationItemModel("lesson9", "Урок 9: такие разные вопросы", "Описание к первому уроку", R.drawable.education_item_img, 0,
+                "video9.mp4", "https://firebasestorage.googleapis.com/v0/b/time-mashine-minsk.appspot.com/o/1.mp4?alt=media&token=9b314df0-9220-416e-92fe-f9e9e8230b62"),
         )
 
         val lessonTasks = hashMapOf(
@@ -90,6 +36,10 @@ class TaskStorage {
                 PracticeTask(TaskAdapter.TASK_TEST, "lesson2_1"),
                 PracticeTask(TaskAdapter.TASK_COMPARE, "lesson2_2"),
                 PracticeTask(TaskAdapter.TASK_SENTENCE, "lesson2_3")
+            ),
+            "lesson3" to arrayListOf(
+                PracticeTask(TaskAdapter.TASK_TEST, "lesson3_1"),
+                PracticeTask(TaskAdapter.TASK_COMPARE, "lesson3_2"),
             ),
             "lesson4" to arrayListOf(
                 PracticeTask(TaskAdapter.TASK_TEST, "lesson4_1"),
@@ -118,6 +68,26 @@ class TaskStorage {
                     TestItem(
                         "Выберите верный перевод слова \"он\"",
                         arrayListOf("Модь", "Уу”", "Буу”"),
+                        2
+                    )
+                )
+            ),
+
+            "lesson3_1" to TestTask(
+                arrayListOf(
+                    TestItem(
+                        "Что означает фраза \"ԑбай тоши кауңа\"?",
+                        arrayListOf("Спасибо", "Пожалуйста", "Молодец"),
+                        0
+                    ),
+                    TestItem(
+                        "Как переводится фраза \"уу” кодид\"",
+                        arrayListOf("Я сплю", "Ты спишь", "Он спит"),
+                        1
+                    ),
+                    TestItem(
+                        "Как переводится фраза \"буу” коди\"",
+                        arrayListOf("Я сплю", "Ты спишь", "Он спит"),
                         2
                     )
                 )
@@ -177,7 +147,7 @@ class TaskStorage {
                     ),
                     TestItem(
                         "Выберите верный перевод слова он",
-                        arrayListOf("Модь", "Уу”", "Буу”"),
+                        arrayListOf("Мôдь", "Уу”", "Буу”"),
                         0
                     )
                 )
@@ -201,6 +171,15 @@ class TaskStorage {
                     CompareWord("Ԑяйчу", "Тётя")
                 ),
                 arrayListOf("Тётя","Дед","Бабушка","Дядя")
+            ),
+
+            "lesson3_2" to CompareTask(
+                arrayListOf(
+                    CompareWord("кодишь", "спать"),
+                    CompareWord("нытагушь", "отдыхать"),
+                    CompareWord("ôôдь", "есть"),
+                ),
+                arrayListOf("отдыхать","спать","есть")
             ),
 
             "lesson4_2" to CompareTask(
@@ -263,7 +242,6 @@ class TaskStorage {
                     ),
                 )
             )
-
         )
     }
 }

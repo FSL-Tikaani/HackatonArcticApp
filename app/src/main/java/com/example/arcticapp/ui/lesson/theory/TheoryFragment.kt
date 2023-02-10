@@ -1,10 +1,7 @@
 package com.example.arcticapp.ui.lesson.theory
 
-import android.app.DownloadManager
-import android.content.BroadcastReceiver
-import android.content.Context
+
 import android.content.Intent
-import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -35,7 +32,7 @@ class TheoryFragment(
 ) : Fragment() {
     private lateinit var binding: FragmentTheoryBinding
     private lateinit var viewModel: TheoryViewModel
-    private var lessonModel: EducationItemModel = EducationItemModel()
+    private lateinit var lessonModel: EducationItemModel
     //videoPlayer
     private lateinit var player: ExoPlayer
     private lateinit var playerView: StyledPlayerView
@@ -50,17 +47,17 @@ class TheoryFragment(
     ): View {
         binding = FragmentTheoryBinding.inflate(inflater)
         viewModel = ViewModelProvider(this)[TheoryViewModel::class.java]
-        viewModel.loadTheory(lessonID)
 
         viewModel.theory.observe(viewLifecycleOwner) { theory ->
             lessonModel = theory
             binding.tvDescription.text = theory.description
+            progressBar = binding.progressBar
+            setupPlayer()
+            addMP4Files(lastTimePlayer)
         }
+        viewModel.loadTheory(lessonID)
 
         //init videoPlayer
-        progressBar = binding.progressBar
-        setupPlayer()
-        addMP4Files(lastTimePlayer)
         //status
         binding.tvStatusVideo.setOnClickListener {
             if(!isLocalVideoExists(lessonModel.fileVideoName)){
@@ -102,30 +99,33 @@ class TheoryFragment(
     }
 
     private fun addMP4Files(lastTimePlayer: Long){
-        val mediaItem:MediaItem
+        try {
+            val mediaItem:MediaItem
 
-        if(isLocalVideoExists(lessonModel.fileVideoName)){
-            val path = binding.root.context.getExternalFilesDir(null)
-            val videoPath = File(path, lessonModel.fileVideoName)
+            if(isLocalVideoExists(lessonModel.fileVideoName)){
+                val path = binding.root.context.getExternalFilesDir(null)
+                val videoPath = File(path, lessonModel.fileVideoName)
 
-            mediaItem = MediaItem.fromUri(videoPath.toUri())
-        }else{
-            val uriVideo = Uri.parse(
-                lessonModel.urlVideo
-            )
-            mediaItem = MediaItem.fromUri(uriVideo)
-        }
+                mediaItem = MediaItem.fromUri(videoPath.toUri())
+            }else{
+                val uriVideo = Uri.parse(
+                    lessonModel.urlVideo
+                )
+                mediaItem = MediaItem.fromUri(uriVideo)
+            }
 
-        if(player.mediaItemCount == 0){
-            player.addMediaItem(mediaItem)
-        }else{
-            player.removeMediaItems(0, player.mediaItemCount)
-            player.addMediaItem(mediaItem)
-        }
+            if(player.mediaItemCount == 0){
+                player.addMediaItem(mediaItem)
+            }else{
+                player.removeMediaItems(0, player.mediaItemCount)
+                player.addMediaItem(mediaItem)
+            }
 
-        player.seekTo(lastTimePlayer)
-        player.prepare()
-        player.playWhenReady = false;
+            player.seekTo(lastTimePlayer)
+            player.prepare()
+            player.playWhenReady = false
+        } catch (e: Exception) {}
+
     }
 
     override fun onStop() {

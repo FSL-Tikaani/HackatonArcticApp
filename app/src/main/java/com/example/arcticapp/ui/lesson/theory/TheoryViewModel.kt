@@ -14,7 +14,8 @@ class TheoryViewModel : ViewModel() {
 
     fun loadTheory(lessonID: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            theory.postValue(API.getLessonTheory(lessonID))
+            val data = API.getLessonTheory(lessonID)
+            theory.postValue(data)
         }
     }
 }
